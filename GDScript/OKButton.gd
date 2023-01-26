@@ -10,4 +10,5 @@ func _ready():
 
 func _on_OKButton_input_event(_viewport, event, _shape_idx):
 	if event.is_pressed():
+		print("OK clicked")
 		get_parent().get_parent().get_parent().visible = false

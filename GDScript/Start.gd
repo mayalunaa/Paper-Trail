@@ -11,7 +11,7 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
 	if fading and fade.is_playing() == false:
-		var _temp = get_tree().change_scene("res://Tutorial.tscn")
+		var _temp = get_tree().change_scene("res://Scenes/Tutorial.tscn")
 
 func _on_Start_input_event(_viewport, event, _shape_idx):
 	if event.is_pressed():
