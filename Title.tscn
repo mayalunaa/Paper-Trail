@@ -1,0 +1,65 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Resources/PNG Exports/TitleScreen.png" type="Texture" id=1]
+[ext_resource path="res://Start.gd" type="Script" id=2]
+[ext_resource path="res://Stop.gd" type="Script" id=3]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 73.0625, 17.5 )
+
+[sub_resource type="Animation" id=2]
+resource_name = "Fade"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 2 ),
+"transitions": PoolRealArray( 1, 0.450625 ),
+"update": 0,
+"values": [ Color( 0, 0, 0, 0 ), Color( 0, 0, 0, 1 ) ]
+}
+
+[node name="Title Scene" type="Node2D"]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+anchor_mode = 0
+
+[node name="Background" type="TextureRect" parent="."]
+margin_right = 40.0
+margin_bottom = 40.0
+
+[node name="BackgroundSprite" type="Sprite" parent="Background"]
+z_index = -1
+texture = ExtResource( 1 )
+offset = Vector2( 400, 225 )
+
+[node name="Start" type="Area2D" parent="."]
+script = ExtResource( 2 )
+
+[node name="StartShape" type="CollisionShape2D" parent="Start"]
+position = Vector2( 406.063, 330 )
+shape = SubResource( 1 )
+
+[node name="Stop" type="Area2D" parent="."]
+script = ExtResource( 3 )
+
+[node name="StopShape" type="CollisionShape2D" parent="Stop"]
+position = Vector2( 408.5, 386.5 )
+shape = SubResource( 1 )
+
+[node name="Fade" type="AnimationPlayer" parent="."]
+root_node = NodePath("Black")
+anims/Fade = SubResource( 2 )
+
+[node name="Black" type="ColorRect" parent="Fade"]
+visible = false
+margin_right = 800.0
+margin_bottom = 450.0
+color = Color( 0, 0, 0, 0 )
+
+[connection signal="input_event" from="Start" to="Start" method="_on_Start_input_event"]
+[connection signal="input_event" from="Stop" to="Stop" method="_on_Stop_input_event"]
