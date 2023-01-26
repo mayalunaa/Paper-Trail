@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=2]
+[gd_scene load_steps=25 format=2]
 
 [ext_resource path="res://GDScript/Board.gd" type="Script" id=1]
 [ext_resource path="res://GDScript/Folder.gd" type="Script" id=2]
@@ -11,6 +11,8 @@
 [ext_resource path="res://Resources/PNG Exports/BoxOpeningSpriteSheet-BasicBackground-10.png" type="Texture" id=9]
 [ext_resource path="res://Resources/m5x7.ttf" type="DynamicFontData" id=10]
 [ext_resource path="res://GDScript/OKButton.gd" type="Script" id=11]
+[ext_resource path="res://Scenes/LetterFade.gd" type="Script" id=12]
+[ext_resource path="res://Resources/PNG Exports/Arrow.png" type="Texture" id=13]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 45.5, 22 )
@@ -29,7 +31,7 @@ extents = Vector2( 154, 90 )
 
 [sub_resource type="Animation" id=5]
 resource_name = "Fade"
-length = 2.0
+length = 0.5
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:color")
 tracks/0/interp = 1
@@ -37,10 +39,187 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 2 ),
+"times": PoolRealArray( 0, 0.5 ),
 "transitions": PoolRealArray( 1, 0.450625 ),
 "update": 0,
-"values": [ Color( 0, 0, 0, 1 ), Color( 0, 0, 0, 0 ) ]
+"values": [ Color( 0, 0, 0, 1 ), Color( 0, 0, 0, 0.784314 ) ]
+}
+
+[sub_resource type="Animation" id=10]
+resource_name = "LetterFade"
+tracks/0/type = "value"
+tracks/0/path = NodePath("../Black4:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 0, 0, 0, 0.784314 ), Color( 0, 0, 0, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("../../../TextBox:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("../../Arrow:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=12]
+resource_name = "LetterFadeAway"
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 0, 0, 0, 0.784314 ), Color( 0, 0, 0, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("../Black2:color")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 0, 0, 0, 0.784314 ), Color( 0, 0, 0, 0 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("../Black3:color")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 0, 0, 0, 0.784314 ), Color( 0, 0, 0, 0 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("../Black4:color")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 0, 0, 0, 0.784314 ), Color( 0, 0, 0, 0 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("../../Arrow:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+
+[sub_resource type="Animation" id=11]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("../Black2:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 0, 0, 0, 0.784314 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:color")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 0, 0, 0, 0.784314 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("../Black3:color")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 0, 0, 0, 0.784314 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("../Black4:color")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 0, 0, 0, 0.784314 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("../../Arrow:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ) ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("../../../TextBox:modulate")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ) ]
 }
 
 [sub_resource type="DynamicFont" id=7]
@@ -65,7 +244,8 @@ texture = ExtResource( 5 )
 offset = Vector2( 400, 225 )
 
 [node name="Letter" type="TextureRect" parent="."]
-margin_right = 40.0
+margin_left = 73.0
+margin_right = 113.0
 margin_bottom = 40.0
 
 [node name="LetterSprite" type="Sprite" parent="Letter"]
@@ -128,10 +308,58 @@ script = ExtResource( 3 )
 visible = false
 margin_right = 800.0
 margin_bottom = 450.0
-color = Color( 0, 0, 0, 1 )
+color = Color( 0, 0, 0, 0.470588 )
 
-[node name="TextBoxOuter" type="ColorRect" parent="."]
+[node name="LetterFade" type="AnimationPlayer" parent="."]
+root_node = NodePath("LetterBorder/Black")
+anims/LetterFade = SubResource( 10 )
+anims/LetterFadeAway = SubResource( 12 )
+anims/RESET = SubResource( 11 )
+script = ExtResource( 12 )
+
+[node name="LetterBorder" type="Node2D" parent="LetterFade"]
 visible = false
+
+[node name="Black" type="ColorRect" parent="LetterFade/LetterBorder"]
+margin_left = 745.0
+margin_right = 800.0
+margin_bottom = 450.0
+mouse_filter = 2
+color = Color( 0, 0, 0, 0.784314 )
+
+[node name="Black2" type="ColorRect" parent="LetterFade/LetterBorder"]
+margin_right = 550.0
+margin_bottom = 450.0
+mouse_filter = 2
+color = Color( 0, 0, 0, 0.784314 )
+
+[node name="Black3" type="ColorRect" parent="LetterFade/LetterBorder"]
+margin_left = 550.0
+margin_right = 745.0
+margin_bottom = 385.0
+mouse_filter = 2
+color = Color( 0, 0, 0, 0.784314 )
+
+[node name="Black4" type="ColorRect" parent="LetterFade/LetterBorder"]
+margin_left = 550.0
+margin_top = 385.0
+margin_right = 745.0
+margin_bottom = 450.0
+mouse_filter = 2
+color = Color( 0, 0, 0, 0.784314 )
+
+[node name="Arrow" type="Sprite" parent="LetterFade"]
+visible = false
+position = Vector2( 648, 357 )
+scale = Vector2( 0.5, 0.5 )
+z_index = 1
+texture = ExtResource( 13 )
+
+[node name="TextBox" type="Node2D" parent="."]
+modulate = Color( 1, 1, 1, 0 )
+z_index = 1
+
+[node name="TextBoxOuter" type="ColorRect" parent="TextBox"]
 margin_left = 200.0
 margin_top = 125.0
 margin_right = 610.0
@@ -139,14 +367,14 @@ margin_bottom = 335.0
 mouse_filter = 2
 color = Color( 0, 0, 0, 1 )
 
-[node name="TextBoxInner" type="ColorRect" parent="TextBoxOuter"]
+[node name="TextBoxInner" type="ColorRect" parent="TextBox/TextBoxOuter"]
 margin_left = 5.0
 margin_top = 5.0
 margin_right = 405.0
 margin_bottom = 205.0
 mouse_filter = 2
 
-[node name="TextArea" type="ColorRect" parent="TextBoxOuter/TextBoxInner"]
+[node name="TextArea" type="ColorRect" parent="TextBox/TextBoxOuter/TextBoxInner"]
 margin_left = 2.0
 margin_top = 2.0
 margin_right = 398.0
@@ -154,7 +382,7 @@ margin_bottom = 171.0
 mouse_filter = 2
 color = Color( 0.996078, 0.866667, 1, 1 )
 
-[node name="Label" type="Label" parent="TextBoxOuter/TextBoxInner/TextArea"]
+[node name="Label" type="Label" parent="TextBox/TextBoxOuter/TextBoxInner/TextArea"]
 margin_left = 3.0
 margin_top = -6.0
 margin_right = 398.0
@@ -171,7 +399,7 @@ your first letter!
 Click on the letter down below.     c:"
 autowrap = true
 
-[node name="OKBorder" type="ColorRect" parent="TextBoxOuter/TextBoxInner"]
+[node name="OKBorder" type="ColorRect" parent="TextBox/TextBoxOuter/TextBoxInner"]
 margin_left = 367.0
 margin_top = 173.0
 margin_right = 398.0
@@ -179,7 +407,7 @@ margin_bottom = 198.0
 mouse_filter = 2
 color = Color( 0, 0, 0, 1 )
 
-[node name="OK" type="ColorRect" parent="TextBoxOuter/TextBoxInner"]
+[node name="OK" type="ColorRect" parent="TextBox/TextBoxOuter/TextBoxInner"]
 margin_left = 368.0
 margin_top = 174.0
 margin_right = 397.0
@@ -187,7 +415,7 @@ margin_bottom = 197.0
 mouse_filter = 2
 color = Color( 0.996078, 0.866667, 1, 1 )
 
-[node name="Label" type="Label" parent="TextBoxOuter/TextBoxInner/OK"]
+[node name="Label" type="Label" parent="TextBox/TextBoxOuter/TextBoxInner/OK"]
 margin_left = 3.0
 margin_top = -4.0
 margin_right = 28.0
@@ -199,19 +427,20 @@ custom_fonts/font = SubResource( 7 )
 text = "OK"
 autowrap = true
 
-[node name="OKButton" type="Area2D" parent="TextBoxOuter/TextBoxInner/OK"]
+[node name="OKButton" type="Area2D" parent="TextBox/TextBoxOuter/TextBoxInner/OK"]
 z_index = 1
 z_as_relative = false
 script = ExtResource( 11 )
 
-[node name="ButtonShape" type="CollisionShape2D" parent="TextBoxOuter/TextBoxInner/OK/OKButton"]
+[node name="ButtonShape" type="CollisionShape2D" parent="TextBox/TextBoxOuter/TextBoxInner/OK/OKButton"]
 position = Vector2( 14.5, 11.5 )
 shape = SubResource( 8 )
 
 [connection signal="input_event" from="Letter/LetterSprite/Letter" to="Letter/LetterSprite/Letter" method="_on_Letter_input_event"]
+[connection signal="input_event" from="Letter/LetterSprite/Letter" to="LetterFade" method="_on_Letter_input_event"]
 [connection signal="input_event" from="Box/BoxSprite/Box" to="Box/BoxSprite/Box" method="_on_Box_input_event"]
 [connection signal="input_event" from="Trash" to="Trash" method="_on_Trash_input_event"]
 [connection signal="input_event" from="Folder" to="Folder" method="_on_Folder_input_event"]
 [connection signal="input_event" from="Board" to="Board" method="_on_Board_input_event"]
 [connection signal="animation_finished" from="Fade" to="Fade" method="_on_Fade_animation_finished"]
-[connection signal="input_event" from="TextBoxOuter/TextBoxInner/OK/OKButton" to="TextBoxOuter/TextBoxInner/OK/OKButton" method="_on_OKButton_input_event"]
+[connection signal="input_event" from="TextBox/TextBoxOuter/TextBoxInner/OK/OKButton" to="TextBox/TextBoxOuter/TextBoxInner/OK/OKButton" method="_on_OKButton_input_event"]
