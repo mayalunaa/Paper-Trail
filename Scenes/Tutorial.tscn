@@ -11,7 +11,7 @@
 [ext_resource path="res://Resources/PNG Exports/BoxOpeningSpriteSheet-BasicBackground-10.png" type="Texture" id=9]
 [ext_resource path="res://Resources/m5x7.ttf" type="DynamicFontData" id=10]
 [ext_resource path="res://GDScript/OKButton.gd" type="Script" id=11]
-[ext_resource path="res://Scenes/LetterFade.gd" type="Script" id=12]
+[ext_resource path="res://GDScript/LetterFade.gd" type="Script" id=12]
 [ext_resource path="res://Resources/PNG Exports/Arrow.png" type="Texture" id=13]
 
 [sub_resource type="RectangleShape2D" id=1]
@@ -336,13 +336,13 @@ color = Color( 0, 0, 0, 0.784314 )
 [node name="Black3" type="ColorRect" parent="LetterFade/LetterBorder"]
 margin_left = 550.0
 margin_right = 745.0
-margin_bottom = 385.0
+margin_bottom = 377.0
 mouse_filter = 2
 color = Color( 0, 0, 0, 0.784314 )
 
 [node name="Black4" type="ColorRect" parent="LetterFade/LetterBorder"]
 margin_left = 550.0
-margin_top = 385.0
+margin_top = 378.0
 margin_right = 745.0
 margin_bottom = 450.0
 mouse_filter = 2
@@ -350,7 +350,7 @@ color = Color( 0, 0, 0, 0.784314 )
 
 [node name="Arrow" type="Sprite" parent="LetterFade"]
 visible = false
-position = Vector2( 648, 357 )
+position = Vector2( 648, 348 )
 scale = Vector2( 0.5, 0.5 )
 z_index = 1
 texture = ExtResource( 13 )
