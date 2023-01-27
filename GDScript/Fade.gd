@@ -15,6 +15,9 @@ func _on_Fade_animation_finished(anim_name):
 		
 		get_parent().get_node("LetterFade/LetterBorder").visible = true
 		
+		get_parent().get_node("LetterAmount").visible = true
+		get_parent().get_node("LetterAmount").modulate.a = 0
+		
 		get_parent().get_node("LetterFade/Arrow").modulate.a = 0
 		get_parent().get_node("LetterFade/Arrow").visible = true
 		

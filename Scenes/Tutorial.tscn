@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=2]
+[gd_scene load_steps=26 format=2]
 
 [ext_resource path="res://GDScript/Board.gd" type="Script" id=1]
 [ext_resource path="res://GDScript/Folder.gd" type="Script" id=2]
@@ -13,6 +13,7 @@
 [ext_resource path="res://GDScript/OKButton.gd" type="Script" id=11]
 [ext_resource path="res://GDScript/LetterFade.gd" type="Script" id=12]
 [ext_resource path="res://Resources/PNG Exports/Arrow.png" type="Texture" id=13]
+[ext_resource path="res://Resources/PNG Exports/AmountIndicator.png" type="Texture" id=14]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 45.5, 22 )
@@ -78,6 +79,18 @@ tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("../../../LetterAmount:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
 "times": PoolRealArray( 0, 1 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
@@ -221,6 +234,18 @@ tracks/5/keys = {
 "update": 0,
 "values": [ Color( 1, 1, 1, 0 ) ]
 }
+tracks/6/type = "value"
+tracks/6/path = NodePath("../../../LetterAmount:modulate")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ) ]
+}
 
 [sub_resource type="DynamicFont" id=7]
 size = 32
@@ -308,7 +333,7 @@ script = ExtResource( 3 )
 visible = false
 margin_right = 800.0
 margin_bottom = 450.0
-color = Color( 0, 0, 0, 0.470588 )
+color = Color( 0, 0, 0, 1 )
 
 [node name="LetterFade" type="AnimationPlayer" parent="."]
 root_node = NodePath("LetterBorder/Black")
@@ -356,6 +381,7 @@ z_index = 1
 texture = ExtResource( 13 )
 
 [node name="TextBox" type="Node2D" parent="."]
+visible = false
 modulate = Color( 1, 1, 1, 0 )
 z_index = 1
 
@@ -435,6 +461,85 @@ script = ExtResource( 11 )
 [node name="ButtonShape" type="CollisionShape2D" parent="TextBox/TextBoxOuter/TextBoxInner/OK/OKButton"]
 position = Vector2( 14.5, 11.5 )
 shape = SubResource( 8 )
+
+[node name="TutorialBoxes" type="GridContainer" parent="."]
+visible = false
+margin_right = 40.0
+margin_bottom = 40.0
+
+[node name="TutorialLetters" type="GridContainer" parent="."]
+visible = false
+margin_right = 40.0
+margin_bottom = 40.0
+
+[node name="Letter1" type="Label" parent="TutorialLetters"]
+margin_right = 1.0
+margin_bottom = 693.0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 7 )
+text = "Sentimental message <3"
+autowrap = true
+
+[node name="Letter2" type="Label" parent="TutorialLetters"]
+margin_top = 697.0
+margin_right = 1.0
+margin_bottom = 2811.0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 7 )
+text = "Plz send me $500 in bitcoin go to microsoft.scam and send it now thanks"
+autowrap = true
+
+[node name="Letter3" type="Label" parent="TutorialLetters"]
+margin_top = 2815.0
+margin_right = 1.0
+margin_bottom = 3450.0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 7 )
+text = "IMPORTANT TO-DO ITEM"
+autowrap = true
+
+[node name="LetterAmount" type="Sprite" parent="."]
+visible = false
+modulate = Color( 1, 1, 1, 0 )
+position = Vector2( 697, 400 )
+texture = ExtResource( 14 )
+
+[node name="Amount" type="Label" parent="LetterAmount"]
+margin_left = -5.0
+margin_top = -15.0
+margin_right = 8.0
+margin_bottom = 11.0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 7 )
+text = "1"
+align = 1
+autowrap = true
+
+[node name="BoxAmount" type="Sprite" parent="."]
+visible = false
+position = Vector2( 208, 400 )
+texture = ExtResource( 14 )
+
+[node name="Amount" type="Label" parent="BoxAmount"]
+margin_left = -5.0
+margin_top = -15.0
+margin_right = 8.0
+margin_bottom = 11.0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 7 )
+text = "0"
+align = 1
+autowrap = true
 
 [connection signal="input_event" from="Letter/LetterSprite/Letter" to="Letter/LetterSprite/Letter" method="_on_Letter_input_event"]
 [connection signal="input_event" from="Letter/LetterSprite/Letter" to="LetterFade" method="_on_Letter_input_event"]

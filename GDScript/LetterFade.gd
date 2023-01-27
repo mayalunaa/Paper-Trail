@@ -9,7 +9,7 @@ func _ready():
 	textBox = get_parent().get_node("TextBox")
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+func _process(_delta):
 	counter = counter + 0.1
 	self.get_node("Arrow").position.y = 348 + (10 * sin(counter))
 	
