@@ -8,6 +8,7 @@ func _ready():
 #func _process(delta):
 #	pass
 
+# If the board on the wall is clicked, make something happen
 func _on_Board_input_event(_viewport, event, _shape_idx):
 	if event.is_pressed():
 		print("Board clicked")

@@ -73,7 +73,7 @@ tracks/1/keys = {
 "values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("../../Arrow:modulate")
+tracks/2/path = NodePath("../../../Arrow:modulate")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -136,7 +136,7 @@ tracks/2/keys = {
 "values": [ Color( 0, 0, 0, 0.784314 ), Color( 0, 0, 0, 0 ) ]
 }
 tracks/3/type = "value"
-tracks/3/path = NodePath("../Black4:color")
+tracks/3/path = NodePath("../../../Arrow:modulate")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/imported = false
@@ -145,10 +145,10 @@ tracks/3/keys = {
 "times": PoolRealArray( 0, 1 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ Color( 0, 0, 0, 0.784314 ), Color( 0, 0, 0, 0 ) ]
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
 }
 tracks/4/type = "value"
-tracks/4/path = NodePath("../../Arrow:modulate")
+tracks/4/path = NodePath("../../../LetterAmount:modulate")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/imported = false
@@ -211,7 +211,7 @@ tracks/3/keys = {
 "values": [ Color( 0, 0, 0, 0.784314 ) ]
 }
 tracks/4/type = "value"
-tracks/4/path = NodePath("../../Arrow:modulate")
+tracks/4/path = NodePath("../../../Arrow:modulate")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/imported = false
@@ -373,19 +373,12 @@ margin_bottom = 450.0
 mouse_filter = 2
 color = Color( 0, 0, 0, 0.784314 )
 
-[node name="Arrow" type="Sprite" parent="LetterFade"]
-visible = false
-position = Vector2( 648, 348 )
-scale = Vector2( 0.5, 0.5 )
-z_index = 1
-texture = ExtResource( 13 )
-
 [node name="TextBox" type="Node2D" parent="."]
 visible = false
 modulate = Color( 1, 1, 1, 0 )
 z_index = 1
 
-[node name="TextBoxOuter" type="ColorRect" parent="TextBox"]
+[node name="Border" type="ColorRect" parent="TextBox"]
 margin_left = 200.0
 margin_top = 125.0
 margin_right = 610.0
@@ -393,14 +386,14 @@ margin_bottom = 335.0
 mouse_filter = 2
 color = Color( 0, 0, 0, 1 )
 
-[node name="TextBoxInner" type="ColorRect" parent="TextBox/TextBoxOuter"]
+[node name="Inner" type="ColorRect" parent="TextBox/Border"]
 margin_left = 5.0
 margin_top = 5.0
 margin_right = 405.0
 margin_bottom = 205.0
 mouse_filter = 2
 
-[node name="TextArea" type="ColorRect" parent="TextBox/TextBoxOuter/TextBoxInner"]
+[node name="TextArea" type="ColorRect" parent="TextBox/Border/Inner"]
 margin_left = 2.0
 margin_top = 2.0
 margin_right = 398.0
@@ -408,7 +401,7 @@ margin_bottom = 171.0
 mouse_filter = 2
 color = Color( 0.996078, 0.866667, 1, 1 )
 
-[node name="Label" type="Label" parent="TextBox/TextBoxOuter/TextBoxInner/TextArea"]
+[node name="Label" type="Label" parent="TextBox/Border/Inner/TextArea"]
 margin_left = 3.0
 margin_top = -6.0
 margin_right = 398.0
@@ -425,7 +418,7 @@ your first letter!
 Click on the letter down below.     c:"
 autowrap = true
 
-[node name="OKBorder" type="ColorRect" parent="TextBox/TextBoxOuter/TextBoxInner"]
+[node name="OKBorder" type="ColorRect" parent="TextBox/Border/Inner"]
 margin_left = 367.0
 margin_top = 173.0
 margin_right = 398.0
@@ -433,7 +426,7 @@ margin_bottom = 198.0
 mouse_filter = 2
 color = Color( 0, 0, 0, 1 )
 
-[node name="OK" type="ColorRect" parent="TextBox/TextBoxOuter/TextBoxInner"]
+[node name="OK" type="ColorRect" parent="TextBox/Border/Inner"]
 margin_left = 368.0
 margin_top = 174.0
 margin_right = 397.0
@@ -441,7 +434,7 @@ margin_bottom = 197.0
 mouse_filter = 2
 color = Color( 0.996078, 0.866667, 1, 1 )
 
-[node name="Label" type="Label" parent="TextBox/TextBoxOuter/TextBoxInner/OK"]
+[node name="Label" type="Label" parent="TextBox/Border/Inner/OK"]
 margin_left = 3.0
 margin_top = -4.0
 margin_right = 28.0
@@ -453,12 +446,12 @@ custom_fonts/font = SubResource( 7 )
 text = "OK"
 autowrap = true
 
-[node name="OKButton" type="Area2D" parent="TextBox/TextBoxOuter/TextBoxInner/OK"]
+[node name="OKButton" type="Area2D" parent="TextBox/Border/Inner/OK"]
 z_index = 1
 z_as_relative = false
 script = ExtResource( 11 )
 
-[node name="ButtonShape" type="CollisionShape2D" parent="TextBox/TextBoxOuter/TextBoxInner/OK/OKButton"]
+[node name="ButtonShape" type="CollisionShape2D" parent="TextBox/Border/Inner/OK/OKButton"]
 position = Vector2( 14.5, 11.5 )
 shape = SubResource( 8 )
 
@@ -468,7 +461,6 @@ margin_right = 40.0
 margin_bottom = 40.0
 
 [node name="TutorialLetters" type="GridContainer" parent="."]
-visible = false
 margin_right = 40.0
 margin_bottom = 40.0
 
@@ -519,7 +511,7 @@ size_flags_horizontal = 0
 size_flags_vertical = 0
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 custom_fonts/font = SubResource( 7 )
-text = "1"
+text = "3"
 align = 1
 autowrap = true
 
@@ -541,6 +533,13 @@ text = "0"
 align = 1
 autowrap = true
 
+[node name="Arrow" type="Sprite" parent="."]
+visible = false
+position = Vector2( 648, 348 )
+scale = Vector2( 0.5, 0.5 )
+z_index = 1
+texture = ExtResource( 13 )
+
 [connection signal="input_event" from="Letter/LetterSprite/Letter" to="Letter/LetterSprite/Letter" method="_on_Letter_input_event"]
 [connection signal="input_event" from="Letter/LetterSprite/Letter" to="LetterFade" method="_on_Letter_input_event"]
 [connection signal="input_event" from="Box/BoxSprite/Box" to="Box/BoxSprite/Box" method="_on_Box_input_event"]
@@ -548,4 +547,5 @@ autowrap = true
 [connection signal="input_event" from="Folder" to="Folder" method="_on_Folder_input_event"]
 [connection signal="input_event" from="Board" to="Board" method="_on_Board_input_event"]
 [connection signal="animation_finished" from="Fade" to="Fade" method="_on_Fade_animation_finished"]
-[connection signal="input_event" from="TextBox/TextBoxOuter/TextBoxInner/OK/OKButton" to="TextBox/TextBoxOuter/TextBoxInner/OK/OKButton" method="_on_OKButton_input_event"]
+[connection signal="animation_finished" from="LetterFade" to="LetterFade" method="_on_LetterFade_animation_finished"]
+[connection signal="input_event" from="TextBox/Border/Inner/OK/OKButton" to="TextBox/Border/Inner/OK/OKButton" method="_on_OKButton_input_event"]
