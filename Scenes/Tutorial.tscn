@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=2]
+[gd_scene load_steps=27 format=2]
 
 [ext_resource path="res://GDScript/Board.gd" type="Script" id=1]
 [ext_resource path="res://GDScript/Folder.gd" type="Script" id=2]
@@ -14,6 +14,7 @@
 [ext_resource path="res://GDScript/LetterFade.gd" type="Script" id=12]
 [ext_resource path="res://Resources/PNG Exports/Arrow.png" type="Texture" id=13]
 [ext_resource path="res://Resources/PNG Exports/AmountIndicator.png" type="Texture" id=14]
+[ext_resource path="res://Scenes/TextArea.gd" type="Script" id=15]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 45.5, 22 )
@@ -252,7 +253,7 @@ size = 32
 font_data = ExtResource( 10 )
 
 [sub_resource type="RectangleShape2D" id=8]
-extents = Vector2( 16.5, 13.5 )
+extents = Vector2( 16.5, 12 )
 
 [node name="Paper Trail Scene" type="Node2D"]
 
@@ -374,7 +375,6 @@ mouse_filter = 2
 color = Color( 0, 0, 0, 0.784314 )
 
 [node name="TextBox" type="Node2D" parent="."]
-visible = false
 modulate = Color( 1, 1, 1, 0 )
 z_index = 1
 
@@ -393,21 +393,24 @@ margin_right = 405.0
 margin_bottom = 205.0
 mouse_filter = 2
 
-[node name="TextArea" type="ColorRect" parent="TextBox/Border/Inner"]
-margin_left = 2.0
-margin_top = 2.0
-margin_right = 398.0
+[node name="ScrollContainer" type="ScrollContainer" parent="TextBox/Border/Inner"]
+margin_left = 3.0
+margin_top = 3.0
+rect_min_size = Vector2( 394, 170 )
+scroll_horizontal_enabled = false
+
+[node name="TextArea" type="ColorRect" parent="TextBox/Border/Inner/ScrollContainer"]
+margin_right = 380.0
 margin_bottom = 171.0
+rect_min_size = Vector2( 380, 171 )
 mouse_filter = 2
 color = Color( 0.996078, 0.866667, 1, 1 )
+script = ExtResource( 15 )
 
-[node name="Label" type="Label" parent="TextBox/Border/Inner/TextArea"]
-margin_left = 3.0
-margin_top = -6.0
-margin_right = 398.0
-margin_bottom = 166.0
-size_flags_horizontal = 0
-size_flags_vertical = 0
+[node name="Label0" type="Label" parent="TextBox/Border/Inner/ScrollContainer/TextArea"]
+margin_left = 2.0
+rect_min_size = Vector2( 380, 170 )
+size_flags_vertical = 1
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 custom_fonts/font = SubResource( 7 )
 text = "Welcome to Paper Trail!
@@ -415,12 +418,45 @@ text = "Welcome to Paper Trail!
 Let's get started by opening
 your first letter!
 
-Click on the letter down below.     c:"
-autowrap = true
+Click on the letter down below.   c:
+
+SECRET SCROLL CONTENT"
+
+[node name="Letter1" type="Label" parent="TextBox/Border/Inner/ScrollContainer/TextArea"]
+visible = false
+margin_left = 2.0
+rect_min_size = Vector2( 380, 171 )
+rect_clip_content = true
+size_flags_vertical = 1
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 7 )
+text = "Sentimental message <3"
+
+[node name="Letter2" type="Label" parent="TextBox/Border/Inner/ScrollContainer/TextArea"]
+visible = false
+margin_left = 2.0
+rect_min_size = Vector2( 380, 171 )
+rect_clip_content = true
+size_flags_vertical = 1
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 7 )
+text = "Plz send me $500 in bitcoin go to
+microsoft.scam and send it now
+thank you yes this is real"
+
+[node name="Letter3" type="Label" parent="TextBox/Border/Inner/ScrollContainer/TextArea"]
+visible = false
+margin_left = 2.0
+rect_min_size = Vector2( 380, 171 )
+rect_clip_content = true
+size_flags_vertical = 1
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 7 )
+text = "IMPORTANT TO-DO ITEM"
 
 [node name="OKBorder" type="ColorRect" parent="TextBox/Border/Inner"]
 margin_left = 367.0
-margin_top = 173.0
+margin_top = 176.0
 margin_right = 398.0
 margin_bottom = 198.0
 mouse_filter = 2
@@ -428,7 +464,7 @@ color = Color( 0, 0, 0, 1 )
 
 [node name="OK" type="ColorRect" parent="TextBox/Border/Inner"]
 margin_left = 368.0
-margin_top = 174.0
+margin_top = 177.0
 margin_right = 397.0
 margin_bottom = 197.0
 mouse_filter = 2
@@ -452,7 +488,7 @@ z_as_relative = false
 script = ExtResource( 11 )
 
 [node name="ButtonShape" type="CollisionShape2D" parent="TextBox/Border/Inner/OK/OKButton"]
-position = Vector2( 14.5, 11.5 )
+position = Vector2( 14.5, 10 )
 shape = SubResource( 8 )
 
 [node name="TutorialBoxes" type="GridContainer" parent="."]
@@ -461,40 +497,12 @@ margin_right = 40.0
 margin_bottom = 40.0
 
 [node name="TutorialLetters" type="GridContainer" parent="."]
-margin_right = 40.0
-margin_bottom = 40.0
-
-[node name="Letter1" type="Label" parent="TutorialLetters"]
-margin_right = 1.0
-margin_bottom = 693.0
-size_flags_horizontal = 0
-size_flags_vertical = 0
-custom_colors/font_color = Color( 0, 0, 0, 1 )
-custom_fonts/font = SubResource( 7 )
-text = "Sentimental message <3"
-autowrap = true
-
-[node name="Letter2" type="Label" parent="TutorialLetters"]
-margin_top = 697.0
-margin_right = 1.0
-margin_bottom = 2811.0
-size_flags_horizontal = 0
-size_flags_vertical = 0
-custom_colors/font_color = Color( 0, 0, 0, 1 )
-custom_fonts/font = SubResource( 7 )
-text = "Plz send me $500 in bitcoin go to microsoft.scam and send it now thanks"
-autowrap = true
-
-[node name="Letter3" type="Label" parent="TutorialLetters"]
-margin_top = 2815.0
-margin_right = 1.0
-margin_bottom = 3450.0
-size_flags_horizontal = 0
-size_flags_vertical = 0
-custom_colors/font_color = Color( 0, 0, 0, 1 )
-custom_fonts/font = SubResource( 7 )
-text = "IMPORTANT TO-DO ITEM"
-autowrap = true
+visible = false
+margin_left = 210.0
+margin_top = 130.0
+margin_right = 606.0
+margin_bottom = 301.0
+rect_min_size = Vector2( 396, 171 )
 
 [node name="LetterAmount" type="Sprite" parent="."]
 visible = false

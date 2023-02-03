@@ -27,10 +27,10 @@ func _on_Letter_input_event(_viewport, event, _shape_idx):
 	lettersprite.frame = min(lettersprite.frame + 1, 5)
 	
 	# If the letter is clicked on, do something
-	if event.is_pressed():
-		var root = get_parent().get_parent().get_parent()
-		var amount = int(root.get_node("LetterAmount/Amount").text)
-		if amount > 0:
-			var letter = root.get_node("TutorialLetters").get_child(amount-1)
-			print(letter.text)
-			#var txt = root.get_node("TextBox/Border/Inner/OK/Label")
+#	if event.is_pressed():
+#		var root = get_parent().get_parent().get_parent()
+#		var amount = int(root.get_node("LetterAmount/Amount").text)
+#		if amount > 0:
+#			var letter = root.get_node("TutorialLetters").get_child(amount-1)
+#			print(letter.text)
+#			#var txt = root.get_node("TextBox/Border/Inner/OK/Label")
