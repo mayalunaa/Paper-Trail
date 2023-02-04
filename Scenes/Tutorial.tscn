@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=2]
+[gd_scene load_steps=28 format=2]
 
 [ext_resource path="res://GDScript/Board.gd" type="Script" id=1]
 [ext_resource path="res://GDScript/Folder.gd" type="Script" id=2]
@@ -15,6 +15,7 @@
 [ext_resource path="res://Resources/PNG Exports/Arrow.png" type="Texture" id=13]
 [ext_resource path="res://Resources/PNG Exports/AmountIndicator.png" type="Texture" id=14]
 [ext_resource path="res://Scenes/TextArea.gd" type="Script" id=15]
+[ext_resource path="res://Scenes/Arrow.gd" type="Script" id=16]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 45.5, 22 )
@@ -153,7 +154,7 @@ tracks/4/path = NodePath("../../../LetterAmount:modulate")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/imported = false
-tracks/4/enabled = true
+tracks/4/enabled = false
 tracks/4/keys = {
 "times": PoolRealArray( 0, 1 ),
 "transitions": PoolRealArray( 1, 1 ),
@@ -393,13 +394,13 @@ margin_right = 405.0
 margin_bottom = 205.0
 mouse_filter = 2
 
-[node name="ScrollContainer" type="ScrollContainer" parent="TextBox/Border/Inner"]
+[node name="Scroll" type="ScrollContainer" parent="TextBox/Border/Inner"]
 margin_left = 3.0
 margin_top = 3.0
 rect_min_size = Vector2( 394, 170 )
 scroll_horizontal_enabled = false
 
-[node name="TextArea" type="ColorRect" parent="TextBox/Border/Inner/ScrollContainer"]
+[node name="TextArea" type="ColorRect" parent="TextBox/Border/Inner/Scroll"]
 margin_right = 380.0
 margin_bottom = 171.0
 rect_min_size = Vector2( 380, 171 )
@@ -407,7 +408,7 @@ mouse_filter = 2
 color = Color( 0.996078, 0.866667, 1, 1 )
 script = ExtResource( 15 )
 
-[node name="Label0" type="Label" parent="TextBox/Border/Inner/ScrollContainer/TextArea"]
+[node name="Letter0" type="Label" parent="TextBox/Border/Inner/Scroll/TextArea"]
 margin_left = 2.0
 rect_min_size = Vector2( 380, 170 )
 size_flags_vertical = 1
@@ -422,7 +423,7 @@ Click on the letter down below.   c:
 
 SECRET SCROLL CONTENT"
 
-[node name="Letter1" type="Label" parent="TextBox/Border/Inner/ScrollContainer/TextArea"]
+[node name="Letter1" type="Label" parent="TextBox/Border/Inner/Scroll/TextArea"]
 visible = false
 margin_left = 2.0
 rect_min_size = Vector2( 380, 171 )
@@ -432,7 +433,7 @@ custom_colors/font_color = Color( 0, 0, 0, 1 )
 custom_fonts/font = SubResource( 7 )
 text = "Sentimental message <3"
 
-[node name="Letter2" type="Label" parent="TextBox/Border/Inner/ScrollContainer/TextArea"]
+[node name="Letter2" type="Label" parent="TextBox/Border/Inner/Scroll/TextArea"]
 visible = false
 margin_left = 2.0
 rect_min_size = Vector2( 380, 171 )
@@ -444,7 +445,7 @@ text = "Plz send me $500 in bitcoin go to
 microsoft.scam and send it now
 thank you yes this is real"
 
-[node name="Letter3" type="Label" parent="TextBox/Border/Inner/ScrollContainer/TextArea"]
+[node name="Letter3" type="Label" parent="TextBox/Border/Inner/Scroll/TextArea"]
 visible = false
 margin_left = 2.0
 rect_min_size = Vector2( 380, 171 )
@@ -491,21 +492,7 @@ script = ExtResource( 11 )
 position = Vector2( 14.5, 10 )
 shape = SubResource( 8 )
 
-[node name="TutorialBoxes" type="GridContainer" parent="."]
-visible = false
-margin_right = 40.0
-margin_bottom = 40.0
-
-[node name="TutorialLetters" type="GridContainer" parent="."]
-visible = false
-margin_left = 210.0
-margin_top = 130.0
-margin_right = 606.0
-margin_bottom = 301.0
-rect_min_size = Vector2( 396, 171 )
-
 [node name="LetterAmount" type="Sprite" parent="."]
-visible = false
 modulate = Color( 1, 1, 1, 0 )
 position = Vector2( 697, 400 )
 texture = ExtResource( 14 )
@@ -547,13 +534,12 @@ position = Vector2( 648, 348 )
 scale = Vector2( 0.5, 0.5 )
 z_index = 1
 texture = ExtResource( 13 )
+script = ExtResource( 16 )
 
 [connection signal="input_event" from="Letter/LetterSprite/Letter" to="Letter/LetterSprite/Letter" method="_on_Letter_input_event"]
-[connection signal="input_event" from="Letter/LetterSprite/Letter" to="LetterFade" method="_on_Letter_input_event"]
 [connection signal="input_event" from="Box/BoxSprite/Box" to="Box/BoxSprite/Box" method="_on_Box_input_event"]
 [connection signal="input_event" from="Trash" to="Trash" method="_on_Trash_input_event"]
 [connection signal="input_event" from="Folder" to="Folder" method="_on_Folder_input_event"]
 [connection signal="input_event" from="Board" to="Board" method="_on_Board_input_event"]
 [connection signal="animation_finished" from="Fade" to="Fade" method="_on_Fade_animation_finished"]
-[connection signal="animation_finished" from="LetterFade" to="LetterFade" method="_on_LetterFade_animation_finished"]
 [connection signal="input_event" from="TextBox/Border/Inner/OK/OKButton" to="TextBox/Border/Inner/OK/OKButton" method="_on_OKButton_input_event"]

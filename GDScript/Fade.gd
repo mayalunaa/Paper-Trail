@@ -7,8 +7,8 @@ func _ready():
 	self.play("Fade")
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-# func _process(_delta):
-# 	pass
+#func _process(_delta):
+#	pass
 
 # Once the "Fade" animation is finished,
 func _on_Fade_animation_finished(anim_name):
@@ -18,15 +18,9 @@ func _on_Fade_animation_finished(anim_name):
 		self.get_node("Black").visible = false
 		get_parent().get_node("LetterFade/LetterBorder").visible = true
 		
-		# The text box, the arrow above the letter, and the number indicator
-		# will slowly appear in the "LetterFade" animation so ensure they're
-		# visible, yet remain transparent so the animation can begin properly
-		get_parent().get_node("TextBox").modulate.a = 0
-		get_parent().get_node("TextBox").visible = true
+		# Ensure the arrow is visible but transparent (looks weird otherwise)
 		get_parent().get_node("Arrow").modulate.a = 0
 		get_parent().get_node("Arrow").visible = true
-		get_parent().get_node("LetterAmount").modulate.a = 0
-		get_parent().get_node("LetterAmount").visible = true
 		
 		# Play the next "LetterFade" animation
 		get_parent().get_node("LetterFade").play("LetterFade")
