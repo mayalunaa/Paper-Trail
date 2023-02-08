@@ -607,10 +607,15 @@ position = Vector2( 400, 225 )
 texture = ExtResource( 22 )
 
 [connection signal="input_event" from="Board/BoardSprite/Board" to="Board/BoardSprite/Board" method="_on_Board_input_event"]
+[connection signal="input_event" from="Board/BoardSprite/Board" to="TableLetter/LetterSprite/TableLetter" method="_on_Board_input_event"]
 [connection signal="input_event" from="Trash/TrashSprite/Trash" to="Trash/TrashSprite/Trash" method="_on_Trash_input_event"]
+[connection signal="input_event" from="Trash/TrashSprite/Trash" to="TableLetter/LetterSprite/TableLetter" method="_on_Trash_input_event"]
 [connection signal="input_event" from="Folder/FolderSprite/Folder" to="Folder/FolderSprite/Folder" method="_on_Folder_input_event"]
+[connection signal="input_event" from="Folder/FolderSprite/Folder" to="TableLetter/LetterSprite/TableLetter" method="_on_Folder_input_event"]
 [connection signal="input_event" from="Letter/LetterSprite/Letter" to="Letter/LetterSprite/Letter" method="_on_Letter_input_event"]
+[connection signal="input_event" from="Letter/LetterSprite/Letter" to="TableLetter/LetterSprite/TableLetter" method="_on_Letter_input_event"]
 [connection signal="input_event" from="Box/BoxSprite/Box" to="Box/BoxSprite/Box" method="_on_Box_input_event"]
+[connection signal="input_event" from="Box/BoxSprite/Box" to="TableLetter/LetterSprite/TableLetter" method="_on_Box_input_event"]
 [connection signal="animation_finished" from="Fade" to="Fade" method="_on_Fade_animation_finished"]
 [connection signal="input_event" from="TextBox/Border/Inner/OK/OKButton" to="TextBox/Border/Inner/OK/OKButton" method="_on_OKButton_input_event"]
 [connection signal="input_event" from="TableLetter/LetterSprite/TableLetter" to="TableLetter/LetterSprite/TableLetter" method="_on_TableLetter_input_event"]
