@@ -14,13 +14,13 @@
 [ext_resource path="res://GDScript/LetterFade.gd" type="Script" id=12]
 [ext_resource path="res://Resources/PNG Exports/Arrow.png" type="Texture" id=13]
 [ext_resource path="res://Resources/PNG Exports/AmountIndicator.png" type="Texture" id=14]
-[ext_resource path="res://Scenes/TextArea.gd" type="Script" id=15]
-[ext_resource path="res://Scenes/Arrow.gd" type="Script" id=16]
+[ext_resource path="res://GDScript/TextArea.gd" type="Script" id=15]
+[ext_resource path="res://GDScript/Arrow.gd" type="Script" id=16]
 [ext_resource path="res://Resources/PNG Exports/FolderFillingSpriteSheet-BasicBackground-15.png" type="Texture" id=17]
 [ext_resource path="res://Resources/PNG Exports/BoardPinningSpriteSheet-BasicBackground-13.png" type="Texture" id=18]
 [ext_resource path="res://Resources/PNG Exports/TrashFillingSpriteSheet-BasicBackground-12.png" type="Texture" id=19]
 [ext_resource path="res://Resources/PNG Exports/LidOpeningSpriteSheet-BasicBackground-14.png" type="Texture" id=20]
-[ext_resource path="res://Scenes/TableLetter.gd" type="Script" id=21]
+[ext_resource path="res://GDScript/TableLetter.gd" type="Script" id=21]
 [ext_resource path="res://Resources/PNG Exports/Letter.png" type="Texture" id=22]
 
 [sub_resource type="RectangleShape2D" id=4]
@@ -471,8 +471,11 @@ your first letter!
 Click on the letter down below.   c:
 
 SECRET SCROLL CONTENT"
+__meta__ = {
+"_editor_description_": "Intro"
+}
 
-[node name="Letter1" type="Label" parent="TextBox/Border/Inner/Scroll/TextArea"]
+[node name="Letter1" type="Label" parent="TextBox/Border/Inner/Scroll/TextArea" groups=["Folder"]]
 visible = false
 margin_left = 2.0
 rect_min_size = Vector2( 380, 171 )
@@ -481,8 +484,11 @@ size_flags_vertical = 1
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 custom_fonts/font = SubResource( 7 )
 text = "Sentimental message <3"
+__meta__ = {
+"_editor_description_": "Folder"
+}
 
-[node name="Letter2" type="Label" parent="TextBox/Border/Inner/Scroll/TextArea"]
+[node name="Letter2" type="Label" parent="TextBox/Border/Inner/Scroll/TextArea" groups=["Trash"]]
 visible = false
 margin_left = 2.0
 rect_min_size = Vector2( 380, 171 )
@@ -493,8 +499,11 @@ custom_fonts/font = SubResource( 7 )
 text = "Plz send me $500 in bitcoin go to
 microsoft.scam and send it now
 thank you yes this is real"
+__meta__ = {
+"_editor_description_": "Trash"
+}
 
-[node name="Letter3" type="Label" parent="TextBox/Border/Inner/Scroll/TextArea"]
+[node name="Letter3" type="Label" parent="TextBox/Border/Inner/Scroll/TextArea" groups=["Board"]]
 visible = false
 margin_left = 2.0
 rect_min_size = Vector2( 380, 171 )
@@ -503,6 +512,9 @@ size_flags_vertical = 1
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 custom_fonts/font = SubResource( 7 )
 text = "IMPORTANT TO-DO ITEM"
+__meta__ = {
+"_editor_description_": "Board"
+}
 
 [node name="OKBorder" type="ColorRect" parent="TextBox/Border/Inner"]
 margin_left = 367.0

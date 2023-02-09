@@ -26,8 +26,8 @@ func _on_Folder_input_event(_viewport, event, _shape_idx):
 	# Increase the lid's animation frame to make the box appear to open
 	lidsprite.frame = min(lidsprite.frame + 1, 6)
 	
-	if event.is_pressed():
-		if foldersprite.frame < 5:
-			foldersprite.frame = foldersprite.frame + 1
-		else:
-			foldersprite.frame = 0
+#	if event.is_pressed():
+#		if foldersprite.frame < 5:
+#			foldersprite.frame = foldersprite.frame + 1
+#		else:
+#			foldersprite.frame = 0

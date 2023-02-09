@@ -19,5 +19,5 @@ func _process(_delta):
 # If the OK button is clicked, toggle the 'fadeOutTextbox' flag
 func _on_OKButton_input_event(_viewport, event, _shape_idx):
 	if event.is_pressed():
-		print("OK clicked")
+#		print("OK clicked")
 		fadeOutTextbox = true
