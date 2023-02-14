@@ -4,7 +4,6 @@ var mouse_inside = false
 var lettersprite
 var remaining
 var root
-
 var textBox
 var textArea
 var textBoxFadeIn = false
@@ -45,6 +44,8 @@ func _on_Letter_input_event(_viewport, event, _shape_idx):
 	lettersprite.frame = min(lettersprite.frame + 1, 5)
 	
 	if event.is_pressed():
+		
+		# If the letter is pressed when the tutorial message is showing
 		if textArea.get_node("Letter0").visible == true:
 			root.get_node("LetterFade").play("LetterFadeAway")
 			textArea.get_node("Letter0").visible = false
@@ -52,6 +53,7 @@ func _on_Letter_input_event(_viewport, event, _shape_idx):
 			if textBox.modulate.a == 0:
 				textBoxFadeIn = true
 
+		# If the letter is pressed and there are letters remaining
 		if remaining != 0:
 			var textpath = "TextBox/Border/Inner/Scroll/TextArea/"
 			var textbox = root.get_node(textpath)
@@ -59,10 +61,11 @@ func _on_Letter_input_event(_viewport, event, _shape_idx):
 			var letterpath = textpath + "Letter" + String(letternum)
 			root.get_node(textpath + "Letter" + String(letternum-1)).visible = false
 			root.get_node(letterpath).visible = true
-			root.get_node("TextBox").visible = true
-			root.get_node("TextBox").modulate.a = 1
+			textBoxFadeIn = true
+			textBox.visible = true
 			root.get_node("LetterAmount").visible = true
 			root.get_node("LetterAmount").modulate.a = 1
 		
+		# If there are no more letters left, make the amount indicator invisible
 		else:
 			root.get_node("LetterAmount").visible = false
