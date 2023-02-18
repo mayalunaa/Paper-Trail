@@ -34,9 +34,9 @@ func _process(delta):
 			timer = 0
 			trans.visible = false
 
-	if timer >= 0.25: moveLetter()
+	if timer >= 0.1: holdLetter()
 
-func moveLetter():
+func holdLetter():
 	trans.visible = true
 
 	var mousePos = get_global_mouse_position()
@@ -73,7 +73,7 @@ func checkIfCorrect(group):
 func _on_TableLetter_input_event(_viewport, _event, _shape_idx):
 	if not onLetter: onLetter = true
 
-func _on_Board_input_event(viewport, event, shape_idx):
+func _on_Board_input_event(_viewport, _event, _shape_idx):
 	if moveLetter and not Input.is_mouse_button_pressed(BUTTON_LEFT):
 		resetPosition()
 		var letternum = String(textbox.get_child_count() - remaining)
@@ -87,8 +87,15 @@ func _on_Board_input_event(viewport, event, shape_idx):
 			if remaining == 0:
 				root.get_node("LetterAmount").visible = false
 				root.get_node("TableLetter").visible = false
+				root.get_node("BoxFade/BoxBorder").visible = true
+				root.get_node("BoxAmount").visible = true
+				root.get_node("BoxFade").play("BoxFade")
+				root.get_node("BoxArrow").visible = true
+				textbox.get_node("Letter3").visible = false
+				textbox.get_node("Letter0").text = root.get_node("BoxFade/BoxText").text
+				textbox.get_node("Letter0").visible = true
 
-func _on_Trash_input_event(viewport, event, shape_idx):
+func _on_Trash_input_event(_viewport, _event, _shape_idx):
 	if moveLetter and not Input.is_mouse_button_pressed(BUTTON_LEFT):
 		resetPosition()
 		var letternum = String(textbox.get_child_count() - remaining)
@@ -102,8 +109,15 @@ func _on_Trash_input_event(viewport, event, shape_idx):
 			if remaining == 0:
 				root.get_node("LetterAmount").visible = false
 				root.get_node("TableLetter").visible = false
+				root.get_node("BoxFade/BoxBorder").visible = true
+				root.get_node("BoxAmount").visible = true
+				root.get_node("BoxFade").play("BoxFade")
+				root.get_node("BoxArrow").visible = true
+				textbox.get_node("Letter3").visible = false
+				textbox.get_node("Letter0").text = root.get_node("BoxFade/BoxText").text
+				textbox.get_node("Letter0").visible = true
 
-func _on_Folder_input_event(viewport, event, shape_idx):
+func _on_Folder_input_event(_viewport, _event, _shape_idx):
 	if moveLetter and not Input.is_mouse_button_pressed(BUTTON_LEFT):
 		resetPosition()
 		var letternum = String(textbox.get_child_count() - remaining)
@@ -117,11 +131,18 @@ func _on_Folder_input_event(viewport, event, shape_idx):
 			if remaining == 0:
 				root.get_node("LetterAmount").visible = false
 				root.get_node("TableLetter").visible = false
+				root.get_node("BoxFade/BoxBorder").visible = true
+				root.get_node("BoxAmount").visible = true
+				root.get_node("BoxFade").play("BoxFade")
+				root.get_node("BoxArrow").visible = true
+				textbox.get_node("Letter3").visible = false
+				textbox.get_node("Letter0").text = root.get_node("BoxFade/BoxText").text
+				textbox.get_node("Letter0").visible = true
 
-func _on_Letter_input_event(viewport, event, shape_idx):
+func _on_Letter_input_event(_viewport, _event, _shape_idx):
 	if moveLetter and not Input.is_mouse_button_pressed(BUTTON_LEFT):
 		resetPosition()
 
-func _on_Box_input_event(viewport, event, shape_idx):
+func _on_Box_input_event(_viewport, _event, _shape_idx):
 	if moveLetter and not Input.is_mouse_button_pressed(BUTTON_LEFT):
 		resetPosition()

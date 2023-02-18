@@ -11,7 +11,7 @@ func _ready():
 #	pass
 
 # If the trash can on the floor is clicked, make something happen
-func _on_Trash_input_event(_viewport, event, _shape_idx):
+func _on_Trash_input_event(_viewport, _event, _shape_idx):
 	pass
 #	if event.is_pressed():
 #		if trashsprite.frame < 5:

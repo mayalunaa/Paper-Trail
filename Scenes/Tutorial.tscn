@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=2]
+[gd_scene load_steps=39 format=2]
 
 [ext_resource path="res://GDScript/Board.gd" type="Script" id=1]
 [ext_resource path="res://GDScript/Folder.gd" type="Script" id=2]
@@ -15,13 +15,14 @@
 [ext_resource path="res://Resources/PNG Exports/Arrow.png" type="Texture" id=13]
 [ext_resource path="res://Resources/PNG Exports/AmountIndicator.png" type="Texture" id=14]
 [ext_resource path="res://GDScript/TextArea.gd" type="Script" id=15]
-[ext_resource path="res://GDScript/Arrow.gd" type="Script" id=16]
+[ext_resource path="res://GDScript/LetterArrow.gd" type="Script" id=16]
 [ext_resource path="res://Resources/PNG Exports/FolderFillingSpriteSheet-BasicBackground-15.png" type="Texture" id=17]
 [ext_resource path="res://Resources/PNG Exports/BoardPinningSpriteSheet-BasicBackground-13.png" type="Texture" id=18]
 [ext_resource path="res://Resources/PNG Exports/TrashFillingSpriteSheet-BasicBackground-12.png" type="Texture" id=19]
 [ext_resource path="res://Resources/PNG Exports/LidOpeningSpriteSheet-BasicBackground-14.png" type="Texture" id=20]
 [ext_resource path="res://GDScript/TableLetter.gd" type="Script" id=21]
 [ext_resource path="res://Resources/PNG Exports/Letter.png" type="Texture" id=22]
+[ext_resource path="res://GDScript/BoxArrow.gd" type="Script" id=23]
 
 [sub_resource type="RectangleShape2D" id=4]
 extents = Vector2( 154, 90 )
@@ -81,7 +82,7 @@ tracks/1/keys = {
 "values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("../../../Arrow:modulate")
+tracks/2/path = NodePath("../../../LetterArrow:modulate")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -252,24 +253,12 @@ tracks/11/keys = {
 "values": [ true, false ]
 }
 tracks/12/type = "value"
-tracks/12/path = NodePath("../../../Arrow:modulate")
+tracks/12/path = NodePath("../../../LetterArrow:modulate")
 tracks/12/interp = 1
 tracks/12/loop_wrap = true
 tracks/12/imported = false
 tracks/12/enabled = true
 tracks/12/keys = {
-"times": PoolRealArray( 0, 1 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 0,
-"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
-}
-tracks/13/type = "value"
-tracks/13/path = NodePath("../../../LetterAmount:modulate")
-tracks/13/interp = 1
-tracks/13/loop_wrap = true
-tracks/13/imported = false
-tracks/13/enabled = false
-tracks/13/keys = {
 "times": PoolRealArray( 0, 1 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
@@ -327,7 +316,7 @@ tracks/3/keys = {
 "values": [ Color( 0, 0, 0, 0.784314 ) ]
 }
 tracks/4/type = "value"
-tracks/4/path = NodePath("../../../Arrow:modulate")
+tracks/4/path = NodePath("../../../LetterArrow:modulate")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/imported = false
@@ -465,6 +454,580 @@ tracks/15/loop_wrap = true
 tracks/15/imported = false
 tracks/15/enabled = true
 tracks/15/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ true ]
+}
+
+[sub_resource type="Animation" id=14]
+resource_name = "BoxFade"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("../../../../../../BoxFade/BoxBorder/Black1:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1, 1.5 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 0, 0, 0, 0 ), Color( 0, 0, 0, 0.784314 ), Color( 0, 0, 0, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("../../../../../../BoxFade/BoxBorder/Black2:color")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 0, 0, 0, 0 ), Color( 0, 0, 0, 0.784314 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("../../../../../../BoxFade/BoxBorder/Black3:color")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 0, 0, 0, 0 ), Color( 0, 0, 0, 0.784314 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("../../../../../../BoxFade/BoxBorder/Black4:color")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 0, 0, 0, 0 ), Color( 0, 0, 0, 0.784314 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("../../../../../../BoxFade/BoxBorder/Black5:color")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 0, 0, 0, 0 ), Color( 0, 0, 0, 0.784314 ) ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("../../../../../../BoxFade/BoxBorder/Black6:color")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 0, 0, 0, 0 ), Color( 0, 0, 0, 0.784314 ) ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("../../../../../../BoxFade/BoxBorder/Black7:color")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 0, 0, 0, 0 ), Color( 0, 0, 0, 0.784314 ) ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("../../../../../../BoxFade/BoxBorder/Black8:color")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 0, 0, 0, 0 ), Color( 0, 0, 0, 0.784314 ) ]
+}
+tracks/8/type = "value"
+tracks/8/path = NodePath("../../../../../../BoxArrow:modulate")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"times": PoolRealArray( 1, 2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/9/type = "value"
+tracks/9/path = NodePath("../../../../../../BoxAmount:modulate")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/keys = {
+"times": PoolRealArray( 1, 2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/10/type = "value"
+tracks/10/path = NodePath("../../../../..:modulate")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/keys = {
+"times": PoolRealArray( 1, 2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=16]
+resource_name = "BoxFadeAway"
+tracks/0/type = "value"
+tracks/0/path = NodePath("../../../../../../BoxFade/BoxBorder/Black1:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 0, 0, 0, 0.784314 ), Color( 0, 0, 0, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("../../../../../../BoxFade/BoxBorder/Black2:color")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 0, 0, 0, 0.784314 ), Color( 0, 0, 0, 0 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("../../../../../../BoxFade/BoxBorder/Black3:color")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 0, 0, 0, 0.784314 ), Color( 0, 0, 0, 0 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("../../../../../../BoxFade/BoxBorder/Black4:color")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 0, 0, 0, 0.784314 ), Color( 0, 0, 0, 0 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("../../../../../../BoxFade/BoxBorder/Black5:color")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 0, 0, 0, 0.784314 ), Color( 0, 0, 0, 0 ) ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("../../../../../../BoxFade/BoxBorder/Black6:color")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 0, 0, 0, 0.784314 ), Color( 0, 0, 0, 0 ) ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("../../../../../../BoxFade/BoxBorder/Black7:color")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 0, 0, 0, 0.784314 ), Color( 0, 0, 0, 0 ) ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("../../../../../../BoxFade/BoxBorder/Black8:color")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 0, 0, 0, 0.784314 ), Color( 0, 0, 0, 0 ) ]
+}
+tracks/8/type = "value"
+tracks/8/path = NodePath("../../../../../../BoxArrow:modulate")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/9/type = "value"
+tracks/9/path = NodePath("../../../../../../BoxFade/BoxBorder/Black1:visible")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/10/type = "value"
+tracks/10/path = NodePath("../../../../../../BoxFade/BoxBorder/Black2:visible")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/11/type = "value"
+tracks/11/path = NodePath("../../../../../../BoxFade/BoxBorder/Black3:visible")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/12/type = "value"
+tracks/12/path = NodePath("../../../../../../BoxFade/BoxBorder/Black4:visible")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/13/type = "value"
+tracks/13/path = NodePath("../../../../../../BoxFade/BoxBorder/Black5:visible")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/14/type = "value"
+tracks/14/path = NodePath("../../../../../../BoxFade/BoxBorder/Black6:visible")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/15/type = "value"
+tracks/15/path = NodePath("../../../../../../BoxFade/BoxBorder/Black7:visible")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/16/type = "value"
+tracks/16/path = NodePath("../../../../../../BoxFade/BoxBorder/Black8:visible")
+tracks/16/interp = 1
+tracks/16/loop_wrap = true
+tracks/16/imported = false
+tracks/16/enabled = true
+tracks/16/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+
+[sub_resource type="Animation" id=15]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("../../../../../../BoxFade/BoxBorder/Black1:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 0, 0, 0, 0.784314 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("../../../../../../BoxFade/BoxBorder/Black2:color")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 0, 0, 0, 0.784314 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("../../../../../../BoxFade/BoxBorder/Black3:color")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 0, 0, 0, 0.784314 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("../../../../../../BoxFade/BoxBorder/Black4:color")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 0, 0, 0, 0.784314 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("../../../../../../BoxFade/BoxBorder/Black5:color")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 0, 0, 0, 0.784314 ) ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("../../../../../../BoxFade/BoxBorder/Black6:color")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 0, 0, 0, 0.784314 ) ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("../../../../../../BoxFade/BoxBorder/Black7:color")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 0, 0, 0, 0.784314 ) ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("../../../../../../BoxFade/BoxBorder/Black8:color")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 0, 0, 0, 0.784314 ) ]
+}
+tracks/8/type = "value"
+tracks/8/path = NodePath("../../../../../../BoxArrow:modulate")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ) ]
+}
+tracks/9/type = "value"
+tracks/9/path = NodePath("../../../../../../BoxAmount:modulate")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ) ]
+}
+tracks/10/type = "value"
+tracks/10/path = NodePath("../../../../..:modulate")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ) ]
+}
+tracks/11/type = "value"
+tracks/11/path = NodePath("../../../../../../BoxFade/BoxBorder/Black1:visible")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ true ]
+}
+tracks/12/type = "value"
+tracks/12/path = NodePath("../../../../../../BoxFade/BoxBorder/Black2:visible")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ true ]
+}
+tracks/13/type = "value"
+tracks/13/path = NodePath("../../../../../../BoxFade/BoxBorder/Black3:visible")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ true ]
+}
+tracks/14/type = "value"
+tracks/14/path = NodePath("../../../../../../BoxFade/BoxBorder/Black4:visible")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ true ]
+}
+tracks/15/type = "value"
+tracks/15/path = NodePath("../../../../../../BoxFade/BoxBorder/Black5:visible")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ true ]
+}
+tracks/16/type = "value"
+tracks/16/path = NodePath("../../../../../../BoxFade/BoxBorder/Black6:visible")
+tracks/16/interp = 1
+tracks/16/loop_wrap = true
+tracks/16/imported = false
+tracks/16/enabled = true
+tracks/16/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ true ]
+}
+tracks/17/type = "value"
+tracks/17/path = NodePath("../../../../../../BoxFade/BoxBorder/Black7:visible")
+tracks/17/interp = 1
+tracks/17/loop_wrap = true
+tracks/17/imported = false
+tracks/17/enabled = true
+tracks/17/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ true ]
+}
+tracks/18/type = "value"
+tracks/18/path = NodePath("../../../../../../BoxFade/BoxBorder/Black8:visible")
+tracks/18/interp = 1
+tracks/18/loop_wrap = true
+tracks/18/imported = false
+tracks/18/enabled = true
+tracks/18/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
@@ -613,7 +1176,7 @@ script = ExtResource( 12 )
 
 [node name="Black" type="ColorRect" parent="LetterFade/LetterBorder"]
 margin_left = 608.0
-margin_top = 304.0
+margin_top = 325.0
 margin_right = 723.0
 margin_bottom = 377.0
 color = Color( 0, 0, 0, 0.784314 )
@@ -626,7 +1189,7 @@ color = Color( 0, 0, 0, 0.784314 )
 [node name="Black3" type="ColorRect" parent="LetterFade/LetterBorder"]
 margin_left = 570.0
 margin_right = 800.0
-margin_bottom = 304.0
+margin_bottom = 325.0
 color = Color( 0, 0, 0, 0.784314 )
 
 [node name="Black4" type="ColorRect" parent="LetterFade/LetterBorder"]
@@ -639,25 +1202,109 @@ color = Color( 0, 0, 0, 0.784314 )
 
 [node name="Black5" type="ColorRect" parent="LetterFade/LetterBorder"]
 margin_left = 723.0
-margin_top = 304.0
+margin_top = 325.0
 margin_right = 800.0
 margin_bottom = 450.0
 color = Color( 0, 0, 0, 0.784314 )
 
 [node name="Black6" type="ColorRect" parent="LetterFade/LetterBorder"]
 margin_left = 570.0
-margin_top = 331.0
+margin_top = 352.0
 margin_right = 608.0
 margin_bottom = 377.0
 color = Color( 0, 0, 0, 0.784314 )
 
 [node name="Black7" type="ColorRect" parent="LetterFade/LetterBorder"]
 margin_left = 570.0
-margin_top = 304.0
+margin_top = 325.0
 margin_right = 608.0
-margin_bottom = 331.0
+margin_bottom = 352.0
 mouse_filter = 2
 color = Color( 0, 0, 0, 0.784314 )
+
+[node name="BoxFade" type="AnimationPlayer" parent="."]
+root_node = NodePath("../TextBox/Border/Inner/Scroll/TextArea/Letter3")
+anims/BoxFade = SubResource( 14 )
+anims/BoxFadeAway = SubResource( 16 )
+anims/RESET = SubResource( 15 )
+
+[node name="BoxBorder" type="Node2D" parent="BoxFade"]
+visible = false
+
+[node name="Black1" type="ColorRect" parent="BoxFade/BoxBorder"]
+margin_left = 72.0
+margin_top = 377.0
+margin_right = 225.0
+margin_bottom = 450.0
+mouse_filter = 2
+color = Color( 0, 0, 0, 0.784314 )
+
+[node name="Black2" type="ColorRect" parent="BoxFade/BoxBorder"]
+margin_left = 570.0
+margin_top = 325.0
+margin_right = 608.0
+margin_bottom = 352.0
+mouse_filter = 2
+color = Color( 0, 0, 0, 0.784314 )
+
+[node name="Black3" type="ColorRect" parent="BoxFade/BoxBorder"]
+margin_right = 608.0
+margin_bottom = 325.0
+color = Color( 0, 0, 0, 0.784314 )
+
+[node name="Black4" type="ColorRect" parent="BoxFade/BoxBorder"]
+margin_left = 608.0
+margin_right = 800.0
+margin_bottom = 450.0
+color = Color( 0, 0, 0, 0.784314 )
+
+[node name="Black5" type="ColorRect" parent="BoxFade/BoxBorder"]
+margin_top = 325.0
+margin_right = 570.0
+margin_bottom = 377.0
+color = Color( 0, 0, 0, 0.784314 )
+
+[node name="Black6" type="ColorRect" parent="BoxFade/BoxBorder"]
+margin_top = 377.0
+margin_right = 72.0
+margin_bottom = 450.0
+color = Color( 0, 0, 0, 0.784314 )
+
+[node name="Black7" type="ColorRect" parent="BoxFade/BoxBorder"]
+margin_left = 225.0
+margin_top = 378.0
+margin_right = 608.0
+margin_bottom = 450.0
+color = Color( 0, 0, 0, 0.784314 )
+
+[node name="Black8" type="ColorRect" parent="BoxFade/BoxBorder"]
+margin_left = 570.0
+margin_top = 352.0
+margin_right = 608.0
+margin_bottom = 377.0
+color = Color( 0, 0, 0, 0.784314 )
+
+[node name="BoxText" type="Label" parent="BoxFade"]
+visible = false
+margin_left = 210.0
+margin_top = 133.0
+margin_right = 600.0
+margin_bottom = 362.0
+rect_min_size = Vector2( 380, 170 )
+size_flags_vertical = 1
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 7 )
+text = "Very well done opening letters!
+
+Now, let's try opening your
+first package!
+
+Click on the package down below. c:
+
+SECRET SCROLL CONTENT"
+__meta__ = {
+"_editor_description_": "Intro"
+}
 
 [node name="TextBox" type="Node2D" parent="."]
 modulate = Color( 1, 1, 1, 0 )
@@ -667,7 +1314,7 @@ z_index = 1
 margin_left = 200.0
 margin_top = 125.0
 margin_right = 610.0
-margin_bottom = 335.0
+margin_bottom = 353.0
 mouse_filter = 2
 color = Color( 0, 0, 0, 1 )
 
@@ -675,19 +1322,21 @@ color = Color( 0, 0, 0, 1 )
 margin_left = 5.0
 margin_top = 5.0
 margin_right = 405.0
-margin_bottom = 205.0
+margin_bottom = 223.0
 mouse_filter = 2
 
 [node name="Scroll" type="ScrollContainer" parent="TextBox/Border/Inner"]
 margin_left = 3.0
 margin_top = 3.0
-rect_min_size = Vector2( 394, 170 )
+margin_right = 397.0
+margin_bottom = 187.0
+rect_min_size = Vector2( 394, 187 )
 scroll_horizontal_enabled = false
 
 [node name="TextArea" type="ColorRect" parent="TextBox/Border/Inner/Scroll"]
 margin_right = 380.0
-margin_bottom = 171.0
-rect_min_size = Vector2( 380, 171 )
+margin_bottom = 187.0
+rect_min_size = Vector2( 380, 187 )
 mouse_filter = 2
 color = Color( 0.996078, 0.866667, 1, 1 )
 script = ExtResource( 15 )
@@ -718,7 +1367,14 @@ rect_clip_content = true
 size_flags_vertical = 1
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 custom_fonts/font = SubResource( 7 )
-text = "Sentimental message <3"
+text = "Happy 13th Birthday!
+
+Hope you have a day just as sweet
+as you, dear.
+
+Love you very much <3
+
+                           - Grandma"
 __meta__ = {
 "_editor_description_": "Folder"
 }
@@ -731,9 +1387,16 @@ rect_clip_content = true
 size_flags_vertical = 1
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 custom_fonts/font = SubResource( 7 )
-text = "Plz send me $500 in bitcoin go to
-microsoft.scam and send it now
-thank you yes this is real"
+text = "          CONGRATULATIONS!!!
+You've earned a once-in-a-lifetime
+chance to apply for a FREE,
+ALL-EXPENSES-PAID VACATION!
+
+Please visit our website and apply
+for this amazing opportunity!
+
+Visit today:
+amazingfreevacation.com"
 __meta__ = {
 "_editor_description_": "Trash"
 }
@@ -746,24 +1409,39 @@ rect_clip_content = true
 size_flags_vertical = 1
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 custom_fonts/font = SubResource( 7 )
-text = "IMPORTANT TO-DO ITEM"
+text = "IMPORTANT NOTICE, MARK THE DATE!
+
+Grace Middle School's Orientation
+will commence on Sunday, Aug. 18
+at 11AM!
+
+Students will be provided with a
+schedule for their classes, and will
+be shown to their classrooms.
+
+This will also serve as an early
+opportunity for the students
+to meet their classmates!
+
+Remember, school begins on
+Thursday, August 22nd."
 __meta__ = {
 "_editor_description_": "Board"
 }
 
 [node name="OKBorder" type="ColorRect" parent="TextBox/Border/Inner"]
 margin_left = 367.0
-margin_top = 176.0
+margin_top = 194.0
 margin_right = 398.0
-margin_bottom = 198.0
+margin_bottom = 216.0
 mouse_filter = 2
 color = Color( 0, 0, 0, 1 )
 
 [node name="OK" type="ColorRect" parent="TextBox/Border/Inner"]
 margin_left = 368.0
-margin_top = 177.0
+margin_top = 195.0
 margin_right = 397.0
-margin_bottom = 197.0
+margin_bottom = 215.0
 mouse_filter = 2
 color = Color( 0.996078, 0.866667, 1, 1 )
 
@@ -788,6 +1466,15 @@ script = ExtResource( 11 )
 position = Vector2( 14.5, 10 )
 shape = SubResource( 8 )
 
+[node name="BehindScroll" type="ColorRect" parent="TextBox/Border/Inner"]
+show_behind_parent = true
+margin_left = 384.0
+margin_top = 3.0
+margin_right = 398.0
+margin_bottom = 190.0
+mouse_filter = 2
+color = Color( 0.996078, 0.866667, 1, 1 )
+
 [node name="LetterAmount" type="Sprite" parent="."]
 modulate = Color( 1, 1, 1, 0 )
 position = Vector2( 697, 400 )
@@ -808,6 +1495,7 @@ autowrap = true
 
 [node name="BoxAmount" type="Sprite" parent="."]
 visible = false
+modulate = Color( 1, 1, 1, 0 )
 position = Vector2( 208, 400 )
 texture = ExtResource( 14 )
 
@@ -820,17 +1508,26 @@ size_flags_horizontal = 0
 size_flags_vertical = 0
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 custom_fonts/font = SubResource( 7 )
-text = "0"
+text = "1"
 align = 1
 autowrap = true
 
-[node name="Arrow" type="Sprite" parent="."]
+[node name="LetterArrow" type="Sprite" parent="."]
 visible = false
 position = Vector2( 648, 348 )
 scale = Vector2( 0.5, 0.5 )
 z_index = 1
 texture = ExtResource( 13 )
 script = ExtResource( 16 )
+
+[node name="BoxArrow" type="Sprite" parent="."]
+visible = false
+modulate = Color( 1, 1, 1, 0 )
+position = Vector2( 148, 348 )
+scale = Vector2( 0.5, 0.5 )
+z_index = 1
+texture = ExtResource( 13 )
+script = ExtResource( 23 )
 
 [node name="TableLetter" type="TextureRect" parent="."]
 margin_right = 40.0

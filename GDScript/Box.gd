@@ -1,10 +1,19 @@
 extends Area2D
 
 var boxsprite
+var remaining
+var root
+var textBox
+var textArea
+var textBoxFadeOut = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	root = get_tree().root.get_child(0)
 	boxsprite = get_parent()
+	remaining = int(root.get_node("BoxAmount/Amount").text)
+	textBox = root.get_node("TextBox")
+	textArea = textBox.get_node("Border/Inner/Scroll/TextArea")
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
@@ -19,6 +28,13 @@ func _process(_delta):
 			
 			# decrement the box's frame until the box closes (frame 0)
 			boxsprite.frame = max(boxsprite.frame - 1, 0)
+	
+	# If the 'textBoxFadeOut' flag is on, lower transparency of the text box
+	# until the text box is invisible, then toggle the flag off
+	if textBoxFadeOut:
+		textBox.modulate.a = max(textBox.modulate.a - 0.025, 0)
+		if textBox.modulate.a == 1:
+			textBoxFadeOut = false
 
 # If the mouse is hovering over the box,
 func _on_Box_input_event(_viewport, event, _shape_idx):
@@ -26,6 +42,23 @@ func _on_Box_input_event(_viewport, event, _shape_idx):
 	# Increase the box's animation frame to make the box appear to open
 	boxsprite.frame = min(boxsprite.frame + 1, 5)
 	
-	# If the box is clicked on, do something
 	if event.is_pressed():
-		print("Box clicked")
+		
+		# If the box is pressed when the tutorial message is showing
+		if textArea.get_node("Letter0").visible == true:
+			root.get_node("BoxFade").play("BoxFadeAway")
+			textArea.get_node("Letter0").visible = false
+			textBoxFadeOut = true
+
+		# If the box is pressed and there are packages remaining
+		if remaining != 0:
+			var background = root.get_node("Background/BackgroundSprite")
+			var pngpath = "res://Resources/PNG Exports"
+			if remaining == 1:
+				background.texture = load(pngpath + "/Cute.png")
+				remaining = remaining - 1
+				root.get_node("BoxAmount/Amount").text = String(remaining)
+		
+		# If there are no more packages left, make the amount indicator invisible
+		if remaining == 0:
+			root.get_node("BoxAmount").visible = false

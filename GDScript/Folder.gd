@@ -21,7 +21,7 @@ func _process(_delta):
 			lidsprite.frame = max(lidsprite.frame - 1, 0)
 
 # If the folder on the wall is clicked, make something happen
-func _on_Folder_input_event(_viewport, event, _shape_idx):
+func _on_Folder_input_event(_viewport, _event, _shape_idx):
 	# When the mouse is hovered over the folder's collision box
 	# Increase the lid's animation frame to make the box appear to open
 	lidsprite.frame = min(lidsprite.frame + 1, 6)

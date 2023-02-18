@@ -19,8 +19,8 @@ func _on_Fade_animation_finished(anim_name):
 		get_parent().get_node("LetterFade/LetterBorder").visible = true
 		
 		# Ensure the arrow is visible but transparent (looks weird otherwise)
-		get_parent().get_node("Arrow").modulate.a = 0
-		get_parent().get_node("Arrow").visible = true
+		get_parent().get_node("LetterArrow").modulate.a = 0
+		get_parent().get_node("LetterArrow").visible = true
 		
 		# Play the next "LetterFade" animation
 		get_parent().get_node("LetterFade").play("LetterFade")

@@ -11,7 +11,7 @@ func _ready():
 #	pass
 
 # If the board on the wall is clicked, make something happen
-func _on_Board_input_event(_viewport, event, _shape_idx):
+func _on_Board_input_event(_viewport, _event, _shape_idx):
 	pass
 #	if event.is_pressed():
 #		if boardsprite.frame < 5:

@@ -1,9 +1,5 @@
 extends AnimationPlayer
 
-var textBox
-var textArea
-var textBoxFadeAway = false
-
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass

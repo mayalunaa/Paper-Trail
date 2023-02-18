@@ -10,4 +10,4 @@ func _ready():
 func _process(_delta):
 	# Move the Arrow up and down using a sin function
 	counter = (counter + 0.1) / 1
-	self.get_parent().get_node("Arrow").position.y = 348 + (10 * sin(counter))
+	self.get_parent().get_node("LetterArrow").position.y = 348 + (10 * sin(counter))
