@@ -40,6 +40,7 @@ func _process(_delta):
 func _on_Box_input_event(_viewport, event, _shape_idx):
 	
 	# Increase the box's animation frame to make the box appear to open
+	if boxsprite.frame == 0: root.get_node("BoxSound").play()
 	boxsprite.frame = min(boxsprite.frame + 1, 5)
 	
 	if event.is_pressed():
@@ -54,7 +55,9 @@ func _on_Box_input_event(_viewport, event, _shape_idx):
 		if remaining != 0:
 			var background = root.get_node("Background/BackgroundSprite")
 			var pngpath = "res://Resources/PNG Exports"
-			if remaining == 1:
+			var letters = int(root.get_node("LetterAmount/Amount").text)
+			if remaining == 1 and letters == 0:
+				root.get_node("OKSound").play()
 				background.texture = load(pngpath + "/Cute.png")
 				remaining = remaining - 1
 				root.get_node("BoxAmount/Amount").text = String(remaining)

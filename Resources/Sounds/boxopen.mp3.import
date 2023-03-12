@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/boxopen.mp3-b53e9f821c2b333b3cb1b083bc1c7008.mp3str"
+
+[deps]
+
+source_file="res://Resources/Sounds/boxopen.mp3"
+dest_files=[ "res://.import/boxopen.mp3-b53e9f821c2b333b3cb1b083bc1c7008.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

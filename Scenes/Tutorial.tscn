@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=2]
+[gd_scene load_steps=47 format=2]
 
 [ext_resource path="res://GDScript/Board.gd" type="Script" id=1]
 [ext_resource path="res://GDScript/Folder.gd" type="Script" id=2]
@@ -23,6 +23,14 @@
 [ext_resource path="res://GDScript/TableLetter.gd" type="Script" id=21]
 [ext_resource path="res://Resources/PNG Exports/Letter.png" type="Texture" id=22]
 [ext_resource path="res://GDScript/BoxArrow.gd" type="Script" id=23]
+[ext_resource path="res://Resources/Sounds/ok.mp3" type="AudioStream" id=24]
+[ext_resource path="res://Resources/Sounds/papercrush.mp3" type="AudioStream" id=25]
+[ext_resource path="res://Resources/Sounds/placeobject.mp3" type="AudioStream" id=26]
+[ext_resource path="res://Resources/Sounds/letteropen.mp3" type="AudioStream" id=27]
+[ext_resource path="res://Resources/Sounds/paperfolder.mp3" type="AudioStream" id=28]
+[ext_resource path="res://Resources/Sounds/paperboard.mp3" type="AudioStream" id=29]
+[ext_resource path="res://Resources/Sounds/boxopen.mp3" type="AudioStream" id=30]
+[ext_resource path="res://Resources/Sounds/music.mp3" type="AudioStream" id=31]
 
 [sub_resource type="RectangleShape2D" id=4]
 extents = Vector2( 154, 90 )
@@ -1549,6 +1557,31 @@ visible = false
 modulate = Color( 1, 1, 1, 0.392157 )
 position = Vector2( 400, 225 )
 texture = ExtResource( 22 )
+
+[node name="OKSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 24 )
+
+[node name="TrashSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 25 )
+
+[node name="PickupSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 26 )
+
+[node name="BoardSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 29 )
+
+[node name="FolderSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 28 )
+
+[node name="BoxSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 30 )
+
+[node name="LetterSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 27 )
+
+[node name="MusicSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 31 )
+volume_db = -15.0
 
 [connection signal="input_event" from="Board/BoardSprite/Board" to="Board/BoardSprite/Board" method="_on_Board_input_event"]
 [connection signal="input_event" from="Board/BoardSprite/Board" to="TableLetter/LetterSprite/TableLetter" method="_on_Board_input_event"]

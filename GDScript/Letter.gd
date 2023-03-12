@@ -41,6 +41,7 @@ func _process(_delta):
 # If the mouse is hovering over the letter,
 func _on_Letter_input_event(_viewport, event, _shape_idx):
 	# Increase the letter's animation frame to make the box appear to open
+	if lettersprite.frame == 0: root.get_node("LetterSound").play()
 	lettersprite.frame = min(lettersprite.frame + 1, 5)
 	
 	if event.is_pressed():
@@ -55,6 +56,7 @@ func _on_Letter_input_event(_viewport, event, _shape_idx):
 
 		# If the letter is pressed and there are letters remaining
 		if remaining != 0:
+			root.get_node("OKSound").play()
 			var textpath = "TextBox/Border/Inner/Scroll/TextArea/"
 			var textbox = root.get_node(textpath)
 			var letternum = textbox.get_child_count() - remaining

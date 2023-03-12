@@ -5,6 +5,8 @@ func _ready():
 	# Ensure that the black box is visible and play the Fade animation
 	self.get_node("Black").visible = true
 	self.play("Fade")
+	var root = get_tree().root.get_child(0)
+	root.get_node("MusicSound").play()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(_delta):

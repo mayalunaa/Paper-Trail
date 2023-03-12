@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/placeobject.mp3-06924c956f8f01ce32c7b19a97f8b696.mp3str"
+
+[deps]
+
+source_file="res://Resources/Sounds/placeobject.mp3"
+dest_files=[ "res://.import/placeobject.mp3-06924c956f8f01ce32c7b19a97f8b696.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

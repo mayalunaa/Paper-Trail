@@ -29,7 +29,8 @@ func _process(delta):
 			trans.visible = false
 			timer = 0
 	elif onLetter:
-		if Input.is_mouse_button_pressed(BUTTON_LEFT): timer += delta
+		if Input.is_mouse_button_pressed(BUTTON_LEFT):
+			timer += delta
 		else:
 			timer = 0
 			trans.visible = false
@@ -37,7 +38,9 @@ func _process(delta):
 	if timer >= 0.1: holdLetter()
 
 func holdLetter():
-	trans.visible = true
+	if not trans.visible:
+		root.get_node("PickupSound").play()
+		trans.visible = true
 
 	var mousePos = get_global_mouse_position()
 	if not moveLetter:
@@ -50,6 +53,7 @@ func holdLetter():
 		self.position = self.position + diff_pos
 	else:
 		resetPosition()
+		root.get_node("PickupSound").play()
 
 func resetPosition(pos = Vector2(-9,96)):
 	moveLetter = false
@@ -76,9 +80,11 @@ func _on_TableLetter_input_event(_viewport, _event, _shape_idx):
 func _on_Board_input_event(_viewport, _event, _shape_idx):
 	if moveLetter and not Input.is_mouse_button_pressed(BUTTON_LEFT):
 		resetPosition()
+		root.get_node("PickupSound").play()
 		var letternum = String(textbox.get_child_count() - remaining)
 		var letter = textbox.get_node("Letter" + letternum)
 		if get_tree().get_nodes_in_group("Board").has(letter):
+			root.get_node("BoardSound").play()
 			var board = root.get_node("Board/BoardSprite")
 			if board.frame < 5: board.frame = board.frame + 1
 			else: board.frame = 0
@@ -98,9 +104,11 @@ func _on_Board_input_event(_viewport, _event, _shape_idx):
 func _on_Trash_input_event(_viewport, _event, _shape_idx):
 	if moveLetter and not Input.is_mouse_button_pressed(BUTTON_LEFT):
 		resetPosition()
+		root.get_node("PickupSound").play()
 		var letternum = String(textbox.get_child_count() - remaining)
 		var letter = textbox.get_node("Letter" + letternum)
 		if get_tree().get_nodes_in_group("Trash").has(letter):
+			root.get_node("TrashSound").play()
 			var trash = root.get_node("Trash/TrashSprite")
 			if trash.frame < 5: trash.frame = trash.frame + 1
 			else: trash.frame = 0
@@ -120,9 +128,11 @@ func _on_Trash_input_event(_viewport, _event, _shape_idx):
 func _on_Folder_input_event(_viewport, _event, _shape_idx):
 	if moveLetter and not Input.is_mouse_button_pressed(BUTTON_LEFT):
 		resetPosition()
+		root.get_node("PickupSound").play()
 		var letternum = String(textbox.get_child_count() - remaining)
 		var letter = textbox.get_node("Letter" + letternum)
 		if get_tree().get_nodes_in_group("Folder").has(letter):
+			root.get_node("FolderSound").play()
 			var folder = root.get_node("Folder/FolderSprite")
 			if folder.frame < 5: folder.frame = folder.frame + 1
 			else: folder.frame = 0
@@ -142,7 +152,9 @@ func _on_Folder_input_event(_viewport, _event, _shape_idx):
 func _on_Letter_input_event(_viewport, _event, _shape_idx):
 	if moveLetter and not Input.is_mouse_button_pressed(BUTTON_LEFT):
 		resetPosition()
+		root.get_node("PickupSound").play()
 
 func _on_Box_input_event(_viewport, _event, _shape_idx):
 	if moveLetter and not Input.is_mouse_button_pressed(BUTTON_LEFT):
 		resetPosition()
+		root.get_node("PickupSound").play()

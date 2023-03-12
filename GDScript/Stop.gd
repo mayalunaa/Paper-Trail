@@ -18,6 +18,9 @@ func _process(_delta):
 func _on_Stop_input_event(_viewport, event, _shape_idx):
 	if event.is_pressed():
 		
+		# Play the noise
+		get_parent().get_node("SoundPlayer").play()
+		
 		# Make the black box visible and play the "Fade" animation
 		fade.get_node("Black").visible = true
 		fade.play("Fade")

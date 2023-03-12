@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/letteropen.mp3-90342cfeeec95a3fe0acfcc1d6f9ed6b.mp3str"
+
+[deps]
+
+source_file="res://Resources/Sounds/letteropen.mp3"
+dest_files=[ "res://.import/letteropen.mp3-90342cfeeec95a3fe0acfcc1d6f9ed6b.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

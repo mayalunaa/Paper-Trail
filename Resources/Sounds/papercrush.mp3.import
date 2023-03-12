@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/papercrush.mp3-de0ea97e80f6892bf039e4b9529068b0.mp3str"
+
+[deps]
+
+source_file="res://Resources/Sounds/papercrush.mp3"
+dest_files=[ "res://.import/papercrush.mp3-de0ea97e80f6892bf039e4b9529068b0.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

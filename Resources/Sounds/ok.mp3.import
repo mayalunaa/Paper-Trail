@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/ok.mp3-568de0264f3ca1ae053cb06acb07c316.mp3str"
+
+[deps]
+
+source_file="res://Resources/Sounds/ok.mp3"
+dest_files=[ "res://.import/ok.mp3-568de0264f3ca1ae053cb06acb07c316.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

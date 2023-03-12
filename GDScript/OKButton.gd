@@ -2,9 +2,11 @@ extends Area2D
 
 var textbox
 var fadeOutTextbox = false
+var root
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	root = get_tree().root.get_child(0)
 	textbox = get_parent().get_parent().get_parent().get_parent()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -19,5 +21,7 @@ func _process(_delta):
 # If the OK button is clicked, toggle the 'fadeOutTextbox' flag
 func _on_OKButton_input_event(_viewport, event, _shape_idx):
 	if event.is_pressed():
-#		print("OK clicked")
+		
+		root.get_node("OKSound").play()
+#		
 		fadeOutTextbox = true
