@@ -61,18 +61,18 @@ func resetPosition(pos = Vector2(-9,96)):
 	self.position = pos
 	if pos != Vector2(-9,96): trans.position = pos
 	
-func checkIfCorrect(group):
-	if group == "": pass
-	else:
-		var letternum = String(textbox.get_child_count() - remaining)
-		var letter = textbox.get_node("Letter" + letternum)
-		if get_tree().get_nodes_in_group("Board").has(letter):
-			var board = root.get_node("Board/BoardSprite")
-			if board.frame < 5: board.frame = board.frame + 1
-			else: board.frame = 0
-			remaining = int(root.get_node("LetterAmount/Amount").text) - 1
-			root.get_node("LetterAmount/Amount").text = String(remaining)
-			if remaining == 0: root.get_node("LetterAmount").visible = false
+#func checkIfCorrect(group):
+#	if group == "": pass
+#	else:
+#		var letternum = String(textbox.get_child_count() - remaining)
+#		var letter = textbox.get_node("Letter" + letternum)
+#		if get_tree().get_nodes_in_group("Board").has(letter):
+#			var board = root.get_node("Board/BoardSprite")
+#			if board.frame < 5: board.frame = board.frame + 1
+#			else: board.frame = 0
+#			remaining = int(root.get_node("LetterAmount/Amount").text) - 1
+#			root.get_node("LetterAmount/Amount").text = String(remaining)
+#			if remaining == 0: root.get_node("LetterAmount").visible = false
 
 func _on_TableLetter_input_event(_viewport, _event, _shape_idx):
 	if not onLetter: onLetter = true
@@ -90,16 +90,16 @@ func _on_Board_input_event(_viewport, _event, _shape_idx):
 			else: board.frame = 0
 			remaining = int(root.get_node("LetterAmount/Amount").text) - 1
 			root.get_node("LetterAmount/Amount").text = String(remaining)
-			if remaining == 0:
-				root.get_node("LetterAmount").visible = false
-				root.get_node("TableLetter").visible = false
-				root.get_node("BoxFade/BoxBorder").visible = true
-				root.get_node("BoxAmount").visible = true
-				root.get_node("BoxFade").play("BoxFade")
-				root.get_node("BoxArrow").visible = true
-				textbox.get_node("Letter3").visible = false
-				textbox.get_node("Letter0").text = root.get_node("BoxFade/BoxText").text
-				textbox.get_node("Letter0").visible = true
+#			if remaining == 0:
+#				root.get_node("LetterAmount").visible = false
+#				root.get_node("TableLetter").visible = false
+#				root.get_node("BoxFade/BoxBorder").visible = true
+#				root.get_node("BoxAmount").visible = true
+#				root.get_node("BoxFade").play("BoxFade")
+#				root.get_node("BoxArrow").visible = true
+#				textbox.get_node("Letter4").visible = false
+#				textbox.get_node("Letter0").text = root.get_node("BoxFade/BoxText").text
+#				textbox.get_node("Letter0").visible = true
 
 func _on_Trash_input_event(_viewport, _event, _shape_idx):
 	if moveLetter and not Input.is_mouse_button_pressed(BUTTON_LEFT):
@@ -114,16 +114,16 @@ func _on_Trash_input_event(_viewport, _event, _shape_idx):
 			else: trash.frame = 0
 			remaining = int(root.get_node("LetterAmount/Amount").text) - 1
 			root.get_node("LetterAmount/Amount").text = String(remaining)
-			if remaining == 0:
-				root.get_node("LetterAmount").visible = false
-				root.get_node("TableLetter").visible = false
-				root.get_node("BoxFade/BoxBorder").visible = true
-				root.get_node("BoxAmount").visible = true
-				root.get_node("BoxFade").play("BoxFade")
-				root.get_node("BoxArrow").visible = true
-				textbox.get_node("Letter3").visible = false
-				textbox.get_node("Letter0").text = root.get_node("BoxFade/BoxText").text
-				textbox.get_node("Letter0").visible = true
+#			if remaining == 0:
+#				root.get_node("LetterAmount").visible = false
+#				root.get_node("TableLetter").visible = false
+#				root.get_node("BoxFade/BoxBorder").visible = true
+#				root.get_node("BoxAmount").visible = true
+#				root.get_node("BoxFade").play("BoxFade")
+#				root.get_node("BoxArrow").visible = true
+#				textbox.get_node("Letter4").visible = false
+#				textbox.get_node("Letter0").text = root.get_node("BoxFade/BoxText").text
+#				textbox.get_node("Letter0").visible = true
 
 func _on_Folder_input_event(_viewport, _event, _shape_idx):
 	if moveLetter and not Input.is_mouse_button_pressed(BUTTON_LEFT):
@@ -145,7 +145,7 @@ func _on_Folder_input_event(_viewport, _event, _shape_idx):
 				root.get_node("BoxAmount").visible = true
 				root.get_node("BoxFade").play("BoxFade")
 				root.get_node("BoxArrow").visible = true
-				textbox.get_node("Letter3").visible = false
+				textbox.get_node("Letter4").visible = false
 				textbox.get_node("Letter0").text = root.get_node("BoxFade/BoxText").text
 				textbox.get_node("Letter0").visible = true
 

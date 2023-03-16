@@ -56,9 +56,12 @@ func _on_Box_input_event(_viewport, event, _shape_idx):
 			var background = root.get_node("Background/BackgroundSprite")
 			var pngpath = "res://Resources/PNG Exports"
 			var letters = int(root.get_node("LetterAmount/Amount").text)
-			if remaining == 1 and letters == 0:
+			if remaining > 0 and letters == 0:
 				root.get_node("OKSound").play()
-				background.texture = load(pngpath + "/Cute.png")
+				if remaining == 4: background.texture = load(pngpath + "/Cute.png")
+				if remaining == 3: background.texture = load(pngpath + "/Paint.png")
+				if remaining == 2: root.get_node("Dog").visible = true
+				if remaining == 1: background.texture = load(pngpath + "/BobRoss.png")
 				remaining = remaining - 1
 				root.get_node("BoxAmount/Amount").text = String(remaining)
 		

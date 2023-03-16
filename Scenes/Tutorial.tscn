@@ -1,4 +1,4 @@
-[gd_scene load_steps=47 format=2]
+[gd_scene load_steps=48 format=2]
 
 [ext_resource path="res://GDScript/Board.gd" type="Script" id=1]
 [ext_resource path="res://GDScript/Folder.gd" type="Script" id=2]
@@ -31,6 +31,7 @@
 [ext_resource path="res://Resources/Sounds/paperboard.mp3" type="AudioStream" id=29]
 [ext_resource path="res://Resources/Sounds/boxopen.mp3" type="AudioStream" id=30]
 [ext_resource path="res://Resources/Sounds/music.mp3" type="AudioStream" id=31]
+[ext_resource path="res://Resources/PNG Exports/StuffedDog.png" type="Texture" id=32]
 
 [sub_resource type="RectangleShape2D" id=4]
 extents = Vector2( 154, 90 )
@@ -1308,8 +1309,7 @@ Now, let's try opening your
 first package!
 
 Click on the package down below. c:
-
-SECRET SCROLL CONTENT"
+"
 __meta__ = {
 "_editor_description_": "Intro"
 }
@@ -1361,8 +1361,7 @@ Let's get started by opening
 your first letter!
 
 Click on the letter down below.   c:
-
-SECRET SCROLL CONTENT"
+"
 __meta__ = {
 "_editor_description_": "Intro"
 }
@@ -1437,6 +1436,32 @@ __meta__ = {
 "_editor_description_": "Board"
 }
 
+[node name="Letter4" type="Label" parent="TextBox/Border/Inner/Scroll/TextArea" groups=["Folder"]]
+visible = false
+margin_left = 2.0
+rect_min_size = Vector2( 380, 171 )
+rect_clip_content = true
+size_flags_vertical = 1
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 7 )
+text = "Hi honey,
+
+Just wanted to write to you and
+let you know I’m thinking of you.
+
+I hope you're settling in okay at
+Dad’s new place - I can’t wait to
+have you over soon!
+
+Look out for a package from me :)
+(let me know what you name him!!)
+
+Love you very much,
+Mom"
+__meta__ = {
+"_editor_description_": "Board"
+}
+
 [node name="OKBorder" type="ColorRect" parent="TextBox/Border/Inner"]
 margin_left = 367.0
 margin_top = 194.0
@@ -1497,7 +1522,7 @@ size_flags_horizontal = 0
 size_flags_vertical = 0
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 custom_fonts/font = SubResource( 7 )
-text = "3"
+text = "4"
 align = 1
 autowrap = true
 
@@ -1516,7 +1541,7 @@ size_flags_horizontal = 0
 size_flags_vertical = 0
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 custom_fonts/font = SubResource( 7 )
-text = "1"
+text = "4"
 align = 1
 autowrap = true
 
@@ -1582,6 +1607,11 @@ stream = ExtResource( 27 )
 [node name="MusicSound" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource( 31 )
 volume_db = -15.0
+
+[node name="Dog" type="Sprite" parent="."]
+visible = false
+position = Vector2( 658, 203 )
+texture = ExtResource( 32 )
 
 [connection signal="input_event" from="Board/BoardSprite/Board" to="Board/BoardSprite/Board" method="_on_Board_input_event"]
 [connection signal="input_event" from="Board/BoardSprite/Board" to="TableLetter/LetterSprite/TableLetter" method="_on_Board_input_event"]
