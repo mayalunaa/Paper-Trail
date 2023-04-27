@@ -1374,7 +1374,7 @@ rect_clip_content = true
 size_flags_vertical = 1
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 custom_fonts/font = SubResource( 7 )
-text = "Happy 13th Birthday!
+text = "Happy 15th Birthday!
 
 Hope you have a day just as sweet
 as you, dear.
@@ -1418,7 +1418,7 @@ custom_colors/font_color = Color( 0, 0, 0, 1 )
 custom_fonts/font = SubResource( 7 )
 text = "IMPORTANT NOTICE, MARK THE DATE!
 
-Grace Middle School's Orientation
+River Ridge High School's orientation
 will commence on Sunday, Aug. 18
 at 11AM!
 
@@ -1450,7 +1450,7 @@ Just wanted to write to you and
 let you know I’m thinking of you.
 
 I hope you're settling in okay at
-Dad’s new place - I can’t wait to
+Dad's new place - I can't wait to
 have you over soon!
 
 Look out for a package from me :)
@@ -1541,7 +1541,7 @@ size_flags_horizontal = 0
 size_flags_vertical = 0
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 custom_fonts/font = SubResource( 7 )
-text = "4"
+text = "5"
 align = 1
 autowrap = true
 
