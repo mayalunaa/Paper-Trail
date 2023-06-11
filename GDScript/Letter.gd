@@ -28,7 +28,7 @@ func _process(_delta):
 	if lettersprite.frame > 0:
 		# and if the mouse isn't hovering over the letter's collision area,
 		if not lettershape.intersect_point(mousePos, 1, [], 2147483647, true, true):
-			# decrement the letter's frame until the box closes (frame 0)
+			# decrement the letter's frame until the letter closes (frame 0)
 			lettersprite.frame = max(lettersprite.frame - 1, 0)
 
 	# If the 'textBoxFadeIn' flag is on, lower transparency of the text box
@@ -40,7 +40,7 @@ func _process(_delta):
 
 # If the mouse is hovering over the letter,
 func _on_Letter_input_event(_viewport, event, _shape_idx):
-	# Increase the letter's animation frame to make the box appear to open
+	# Increase the letter's animation frame to make the letter appear to open
 	if lettersprite.frame == 0: root.get_node("LetterSound").play()
 	lettersprite.frame = min(lettersprite.frame + 1, 5)
 	
@@ -63,6 +63,8 @@ func _on_Letter_input_event(_viewport, event, _shape_idx):
 			var letterpath = textpath + "Letter" + String(letternum)
 			root.get_node(textpath + "Letter" + String(letternum-1)).visible = false
 			root.get_node(letterpath).visible = true
+			var scroll = root.get_node("TextBox/Border/Inner/Scroll/")
+			scroll.scroll_vertical = 0
 			textBoxFadeIn = true
 			textBox.visible = true
 			root.get_node("LetterAmount").visible = true

@@ -1,4 +1,4 @@
-[gd_scene load_steps=48 format=2]
+[gd_scene load_steps=53 format=2]
 
 [ext_resource path="res://GDScript/Board.gd" type="Script" id=1]
 [ext_resource path="res://GDScript/Folder.gd" type="Script" id=2]
@@ -32,6 +32,10 @@
 [ext_resource path="res://Resources/Sounds/boxopen.mp3" type="AudioStream" id=30]
 [ext_resource path="res://Resources/Sounds/music.mp3" type="AudioStream" id=31]
 [ext_resource path="res://Resources/PNG Exports/StuffedDog.png" type="Texture" id=32]
+[ext_resource path="res://GDScript/BoxAmount.gd" type="Script" id=33]
+[ext_resource path="res://Scenes/100.gd" type="Script" id=34]
+[ext_resource path="res://Resources/PNG Exports/100.png" type="Texture" id=35]
+[ext_resource path="res://Scenes/100Arrow.gd" type="Script" id=36]
 
 [sub_resource type="RectangleShape2D" id=4]
 extents = Vector2( 154, 90 )
@@ -1053,6 +1057,9 @@ extents = Vector2( 16.5, 12 )
 [sub_resource type="RectangleShape2D" id=13]
 extents = Vector2( 46.5, 22 )
 
+[sub_resource type="RectangleShape2D" id=17]
+extents = Vector2( 24.5, 10.5 )
+
 [node name="Paper Trail Scene" type="Node2D"]
 
 [node name="Camera2D" type="Camera2D" parent="."]
@@ -1191,6 +1198,7 @@ margin_bottom = 377.0
 color = Color( 0, 0, 0, 0.784314 )
 
 [node name="Black2" type="ColorRect" parent="LetterFade/LetterBorder"]
+margin_left = -5.0
 margin_right = 570.0
 margin_bottom = 450.0
 color = Color( 0, 0, 0, 0.784314 )
@@ -1360,8 +1368,7 @@ text = "Welcome to Paper Trail!
 Let's get started by opening
 your first letter!
 
-Click on the letter down below.   c:
-"
+Click on the letter down below.   c:"
 __meta__ = {
 "_editor_description_": "Intro"
 }
@@ -1378,9 +1385,7 @@ text = "Happy 15th Birthday!
 
 Hope you have a day just as sweet
 as you, dear.
-
 Love you very much <3
-
                            - Grandma"
 __meta__ = {
 "_editor_description_": "Folder"
@@ -1462,6 +1467,91 @@ __meta__ = {
 "_editor_description_": "Board"
 }
 
+[node name="Letter5" type="Label" parent="TextBox/Border/Inner/Scroll/TextArea" groups=["Folder"]]
+visible = false
+margin_left = 2.0
+rect_min_size = Vector2( 380, 171 )
+rect_clip_content = true
+size_flags_vertical = 1
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 7 )
+text = "Dear Olivia,
+
+I can't believe it’s only been 2
+months since you moved! It feels
+like it’s been so much longer.
+Going from seeing you every day
+to not seeing you at all has felt
+pretty weird. I miss you a lot but
+I know you'll do a lot of fun things
+and meet cool people in River Ridge
+(just don't make any friends that
+are cooler than me, ok?) 
+
+I hope living at your dad's house
+is going okay... I know it's probably
+pretty tough being so far from
+your mom right now. 
+
+Write me back and let me know how
+you're doing!! I want to know all
+about what your new school is like
+when you start.
+
+Ella"
+__meta__ = {
+"_editor_description_": "Board"
+}
+
+[node name="Letter6" type="Label" parent="TextBox/Border/Inner/Scroll/TextArea" groups=["Board"]]
+visible = false
+margin_left = 2.0
+rect_min_size = Vector2( 380, 171 )
+rect_clip_content = true
+size_flags_vertical = 1
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 7 )
+text = "The Walsh Family Health Center 
+
+We have received your information
+and confirmed that you are eligible
+for our drop-in therapy services.
+
+You have been assigned a
+therapist that is available during
+the time slot you selected.
+Please log into your account on our
+website to view further details
+about your therapy consultation."
+__meta__ = {
+"_editor_description_": "Board"
+}
+
+[node name="Letter7" type="Label" parent="TextBox/Border/Inner/Scroll/TextArea" groups=["Trash"]]
+visible = false
+margin_left = 2.0
+rect_min_size = Vector2( 380, 171 )
+rect_clip_content = true
+size_flags_vertical = 1
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 7 )
+text = "River Ridge Humane Society 
+
+Thank you for your interest in
+volunteering at our shelter!
+
+Unfortunately we are not taking on
+any new volunteers at this time,
+however your name and number
+have been taken down and we will
+contact you if there is an opening. 
+
+Best,
+Your friends at River Ridge Humane"
+__meta__ = {
+"_editor_description_": "Board"
+}
+
 [node name="OKBorder" type="ColorRect" parent="TextBox/Border/Inner"]
 margin_left = 367.0
 margin_top = 194.0
@@ -1522,26 +1612,26 @@ size_flags_horizontal = 0
 size_flags_vertical = 0
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 custom_fonts/font = SubResource( 7 )
-text = "4"
+text = "7"
 align = 1
 autowrap = true
 
 [node name="BoxAmount" type="Sprite" parent="."]
-visible = false
 modulate = Color( 1, 1, 1, 0 )
 position = Vector2( 208, 400 )
 texture = ExtResource( 14 )
+script = ExtResource( 33 )
 
 [node name="Amount" type="Label" parent="BoxAmount"]
-margin_left = -5.0
-margin_top = -15.0
-margin_right = 8.0
-margin_bottom = 11.0
+margin_left = -7.0
+margin_top = -16.0
+margin_right = 19.0
+margin_bottom = 39.0
 size_flags_horizontal = 0
 size_flags_vertical = 0
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 custom_fonts/font = SubResource( 7 )
-text = "5"
+text = "12"
 align = 1
 autowrap = true
 
@@ -1613,6 +1703,66 @@ visible = false
 position = Vector2( 658, 203 )
 texture = ExtResource( 32 )
 
+[node name="100" type="Area2D" parent="."]
+visible = false
+position = Vector2( 1074, 170 )
+script = ExtResource( 34 )
+
+[node name="100Shape" type="CollisionShape2D" parent="100"]
+position = Vector2( -421.5, 127.5 )
+shape = SubResource( 17 )
+
+[node name="100Sprite" type="Sprite" parent="100"]
+position = Vector2( -422, 127 )
+z_index = -1
+texture = ExtResource( 35 )
+
+[node name="Label" type="Label" parent="100"]
+visible = false
+margin_right = 40.0
+margin_bottom = 14.0
+text = "Congratulations! You have been
+selected as the winner for our
+annual River Ridge Library art
+contest.
+
+We received many strong
+submissions, but yours stood out
+to us the most. 
+
+You will find the grand prize of
+one hundred dollars enclosed in
+this package, as well as a high
+quality print of your amazing art!
+
+Thank you for being a part of the
+River Ridge Library community."
+
+[node name="EndLabel" type="Label" parent="100"]
+margin_right = 40.0
+margin_bottom = 14.0
+text = "Thank you so much for playing this
+Paper Trail Demo!
+
+This was intended to showcase the
+mechanics which I envisioned being
+in a game like this.
+
+It also serves as a simple example
+of how somebody's story could be
+told through the letters and
+material possessions which
+surround them.
+
+Created by Maya Brown
+UCSC ARTG 172 Spring Quarter 2023"
+
+[node name="100Arrow" type="Sprite" parent="100"]
+position = Vector2( -422, 90 )
+scale = Vector2( 0.226563, 0.242188 )
+texture = ExtResource( 13 )
+script = ExtResource( 36 )
+
 [connection signal="input_event" from="Board/BoardSprite/Board" to="Board/BoardSprite/Board" method="_on_Board_input_event"]
 [connection signal="input_event" from="Board/BoardSprite/Board" to="TableLetter/LetterSprite/TableLetter" method="_on_Board_input_event"]
 [connection signal="input_event" from="Trash/TrashSprite/Trash" to="Trash/TrashSprite/Trash" method="_on_Trash_input_event"]
@@ -1626,3 +1776,4 @@ texture = ExtResource( 32 )
 [connection signal="animation_finished" from="Fade" to="Fade" method="_on_Fade_animation_finished"]
 [connection signal="input_event" from="TextBox/Border/Inner/OK/OKButton" to="TextBox/Border/Inner/OK/OKButton" method="_on_OKButton_input_event"]
 [connection signal="input_event" from="TableLetter/LetterSprite/TableLetter" to="TableLetter/LetterSprite/TableLetter" method="_on_TableLetter_input_event"]
+[connection signal="input_event" from="100" to="100" method="_on_100_input_event"]

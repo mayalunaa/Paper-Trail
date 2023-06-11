@@ -5,7 +5,9 @@ var remaining
 var root
 var textBox
 var textArea
+var scroll
 var textBoxFadeOut = false
+var textBoxFadeIn = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -14,6 +16,7 @@ func _ready():
 	remaining = int(root.get_node("BoxAmount/Amount").text)
 	textBox = root.get_node("TextBox")
 	textArea = textBox.get_node("Border/Inner/Scroll/TextArea")
+	scroll = textBox.get_node("Border/Inner/Scroll")
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
@@ -33,8 +36,15 @@ func _process(_delta):
 	# until the text box is invisible, then toggle the flag off
 	if textBoxFadeOut:
 		textBox.modulate.a = max(textBox.modulate.a - 0.025, 0)
-		if textBox.modulate.a == 1:
+		if textBox.modulate.a == 0:
 			textBoxFadeOut = false
+	
+	# If the 'textBoxFadeIn' flag is on, lower transparency of the text box
+	# until the text box is invisible, then toggle the flag off
+	if textBoxFadeIn:
+		textBox.modulate.a = min(textBox.modulate.a + 0.025, 1)
+		if textBox.modulate.a == 1:
+			textBoxFadeIn = false
 
 # If the mouse is hovering over the box,
 func _on_Box_input_event(_viewport, event, _shape_idx):
@@ -58,11 +68,25 @@ func _on_Box_input_event(_viewport, event, _shape_idx):
 			var letters = int(root.get_node("LetterAmount/Amount").text)
 			if remaining > 0 and letters == 0:
 				root.get_node("OKSound").play()
-				if remaining == 5: background.texture = load(pngpath + "/Cute.png")
-				if remaining == 4: background.texture = load(pngpath + "/Paint.png")
-				if remaining == 3: root.get_node("Dog").visible = true
-				if remaining == 2: background.texture = load(pngpath + "/BobRoss.png")
-				if remaining == 1: background.texture = load(pngpath + "/Art101.png")
+				if remaining == 12: background.texture = load(pngpath + "/Cute.png")
+				if remaining == 11: background.texture = load(pngpath + "/Paint.png")
+				if remaining == 10: root.get_node("Dog").visible = true
+				if remaining == 9: background.texture = load(pngpath + "/BobRoss.png")
+				if remaining == 8: background.texture = load(pngpath + "/Art101.png")
+				if remaining == 7: background.texture = load(pngpath + "/DogPoster.png")
+				if remaining == 6: background.texture = load(pngpath + "/Brushes.png")
+				if remaining == 5: background.texture = load(pngpath + "/Animals.png")
+				if remaining == 4: background.texture = load(pngpath + "/Stereo.png")
+				if remaining == 3: background.texture = load(pngpath + "/Meds.png")
+				if remaining == 2: background.texture = load(pngpath + "/Book2.png")
+				if remaining == 1:
+					root.get_node("100").visible = true
+					scroll.scroll_vertical = 0
+					var letter = textArea.get_node("Letter7")
+					letter.text = root.get_node("100/Label").text
+					textBoxFadeIn = true
+					textBox.visible = true
+					letter.visible = true
 				remaining = remaining - 1
 				root.get_node("BoxAmount/Amount").text = String(remaining)
 		

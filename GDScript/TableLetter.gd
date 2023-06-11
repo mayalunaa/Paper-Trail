@@ -8,12 +8,14 @@ var moveLetter : bool
 var root : Node2D
 var textbox : ColorRect
 var remaining : int
+var scroll : ScrollContainer
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	trans = get_parent().get_parent().get_node("TransSprite")
 	root = get_tree().root.get_child(0)
 	textbox = root.get_node("TextBox/Border/Inner/Scroll/TextArea")
+	scroll = root.get_node("TextBox/Border/Inner/Scroll/")
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -90,16 +92,18 @@ func _on_Board_input_event(_viewport, _event, _shape_idx):
 			else: board.frame = 0
 			remaining = int(root.get_node("LetterAmount/Amount").text) - 1
 			root.get_node("LetterAmount/Amount").text = String(remaining)
-#			if remaining == 0:
-#				root.get_node("LetterAmount").visible = false
-#				root.get_node("TableLetter").visible = false
-#				root.get_node("BoxFade/BoxBorder").visible = true
-#				root.get_node("BoxAmount").visible = true
-#				root.get_node("BoxFade").play("BoxFade")
-#				root.get_node("BoxArrow").visible = true
-#				textbox.get_node("Letter4").visible = false
-#				textbox.get_node("Letter0").text = root.get_node("BoxFade/BoxText").text
-#				textbox.get_node("Letter0").visible = true
+			if remaining == 0:
+				root.get_node("LetterAmount").visible = false
+				root.get_node("TableLetter").visible = false
+				root.get_node("BoxFade/BoxBorder").visible = true
+				root.get_node("BoxAmount").visible = true
+				root.get_node("BoxFade").play("BoxFade")
+				root.get_node("BoxArrow").visible = true
+				for ltr in textbox.get_children():
+					ltr.visible = false
+				textbox.get_node("Letter0").text = root.get_node("BoxFade/BoxText").text
+				scroll.scroll_vertical = 0
+				textbox.get_node("Letter0").visible = true
 
 func _on_Trash_input_event(_viewport, _event, _shape_idx):
 	if moveLetter and not Input.is_mouse_button_pressed(BUTTON_LEFT):
@@ -114,16 +118,18 @@ func _on_Trash_input_event(_viewport, _event, _shape_idx):
 			else: trash.frame = 0
 			remaining = int(root.get_node("LetterAmount/Amount").text) - 1
 			root.get_node("LetterAmount/Amount").text = String(remaining)
-#			if remaining == 0:
-#				root.get_node("LetterAmount").visible = false
-#				root.get_node("TableLetter").visible = false
-#				root.get_node("BoxFade/BoxBorder").visible = true
-#				root.get_node("BoxAmount").visible = true
-#				root.get_node("BoxFade").play("BoxFade")
-#				root.get_node("BoxArrow").visible = true
-#				textbox.get_node("Letter4").visible = false
-#				textbox.get_node("Letter0").text = root.get_node("BoxFade/BoxText").text
-#				textbox.get_node("Letter0").visible = true
+			if remaining == 0:
+				root.get_node("LetterAmount").visible = false
+				root.get_node("TableLetter").visible = false
+				root.get_node("BoxFade/BoxBorder").visible = true
+				root.get_node("BoxAmount").visible = true
+				root.get_node("BoxFade").play("BoxFade")
+				root.get_node("BoxArrow").visible = true
+				for ltr in textbox.get_children():
+					ltr.visible = false
+				textbox.get_node("Letter0").text = root.get_node("BoxFade/BoxText").text
+				scroll.scroll_vertical = 0
+				textbox.get_node("Letter0").visible = true
 
 func _on_Folder_input_event(_viewport, _event, _shape_idx):
 	if moveLetter and not Input.is_mouse_button_pressed(BUTTON_LEFT):
@@ -145,8 +151,10 @@ func _on_Folder_input_event(_viewport, _event, _shape_idx):
 				root.get_node("BoxAmount").visible = true
 				root.get_node("BoxFade").play("BoxFade")
 				root.get_node("BoxArrow").visible = true
-				textbox.get_node("Letter4").visible = false
+				for ltr in textbox.get_children():
+					ltr.visible = false
 				textbox.get_node("Letter0").text = root.get_node("BoxFade/BoxText").text
+				scroll.scroll_vertical = 0
 				textbox.get_node("Letter0").visible = true
 
 func _on_Letter_input_event(_viewport, _event, _shape_idx):
